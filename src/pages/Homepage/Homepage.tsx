@@ -5,15 +5,29 @@ import Navbar from "../../components/Navbar/Navbar";
 import Titlebar from "../../components/Titlebar/Titlebar";
 import MarkdownTextarea from "../../components/MarkdownTextarea/MarkdownTextarea";
 import MarkdownPreview from "../../components/MarkdownPreview/MarkdownPreview";
+import useHomepage from "./hooks/useHomepage";
 
 type Props = {};
 
 const Homepage = (props: Props) => {
+  const {
+    showSidebar,
+    setShowSidebar,
+    markdown,
+    setMarkdown,
+    fileTitle,
+    setFileTitle,
+  } = useHomepage();
+
   return (
     <div className="app-container">
       <WarningMessage />
-      <Sidebar />
-      <Navbar />
+      {showSidebar && <Sidebar />}
+      <Navbar
+        setShowSidebar={setShowSidebar}
+        showSidebar={showSidebar}
+        fileTitle={fileTitle}
+      />
       <Titlebar />
       <MarkdownTextarea />
       <MarkdownPreview />
