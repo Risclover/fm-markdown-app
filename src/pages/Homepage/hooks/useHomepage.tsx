@@ -5,9 +5,10 @@ const useHomepage = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  const [currentFile, setCurrentFile] = useState();
-  const [markdown, setMarkdown] = useState(data[1].content);
-  const [fileTitle, setFileTitle] = useState(data[1].title);
+  const [currentFile, setCurrentFile] = useState(data[1]);
+  const [markdown, setMarkdown] = useState(data[1]?.content || "");
+  const [fileTitle, setFileTitle] = useState(data[1]?.title || "");
+  const [showDeleteWarning, setShowDeleteWarning] = useState(false);
 
   return {
     showSidebar,
@@ -22,6 +23,8 @@ const useHomepage = () => {
     setMarkdown,
     fileTitle,
     setFileTitle,
+    showDeleteWarning,
+    setShowDeleteWarning,
   };
 };
 

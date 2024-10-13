@@ -1,0 +1,128 @@
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--darkest-grey);
+  height: 56px;
+  position: fixed;
+  flex-shrink: 0; /* Do not shrink */
+}
+
+.navbar-file-name {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  gap: 16px;
+  margin-left: 24px;
+}
+
+.navbar-container-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-container-right {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.delete-btn {
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+.delete-btn img {
+  filter: invert(56%) sepia(9%) saturate(256%) hue-rotate(173deg)
+    brightness(89%) contrast(87%);
+}
+
+.delete-btn img:hover {
+  filter: invert(47%) sepia(87%) saturate(1078%) hue-rotate(333deg)
+    brightness(94%) contrast(90%);
+}
+
+.save-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+  background-color: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.save-btn-text {
+  display: none;
+}
+
+.navbar-file-name input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--white);
+}
+
+.navbar-file-name input:focus {
+  border-bottom: 1px solid white;
+  caret-color: var(--orange);
+}
+
+.navbar-file-name-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.document-name {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--light-grey);
+  margin-bottom: 3px;
+  display: none;
+}
+
+.navbar-logo {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-container {
+    height: 72px;
+    display: flex;
+    align-items: center;
+  }
+
+  .save-btn {
+    gap: 8px;
+    padding: 10px 17px;
+    width: fit-content;
+  }
+  .save-btn-text {
+    display: inline-block;
+  }
+
+  .document-name {
+    display: block;
+  }
+
+  .navbar-container-right {
+    margin-right: 16px;
+  }
+}
+
+@media (min-width: 1439px) {
+  .navbar-file-name {
+    border-left: 1px solid var(--dark-grey);
+    padding-left: 24px;
+    margin-left: 0;
+  }
+
+  .navbar-logo {
+    display: block;
+    margin-left: 24px;
+    margin-right: 29px;
+  }
+}

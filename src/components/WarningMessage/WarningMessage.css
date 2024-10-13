@@ -1,0 +1,22 @@
+.warning-message-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
+}
+
+.warning-message-background {
+  height: 100%;
+  width: 100%;
+  background-color: var(--warning-overlay-bg);
+  opacity: 0.5;
+  z-index: 1000;
+  position: absolute;
+}
+
+.warning-message {
+  z-index: 1001;
+}

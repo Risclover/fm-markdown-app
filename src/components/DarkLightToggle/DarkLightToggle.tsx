@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import MoonIcon from "../../assets/images/icon-dark-mode.svg";
 import SunIcon from "../../assets/images/icon-light-mode.svg";
 import DarkLightSwitch from "./DarkLightSwitch";
+import "./DarkLightToggle.css";
+import { ThemeContext } from "../../context/ThemeContext";
 
-type Props = {
-  theme: string;
-};
-
-const DarkLightToggle = ({ theme }: Props) => {
+const DarkLightToggle = () => {
+  const { theme } = useContext(ThemeContext);
   return (
     <div className="dark-light-toggle-container">
       <img

@@ -63,3 +63,219 @@ button {
     height: calc(100vh - 76px - 42px);
   }
 }
+
+.medium-heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.small-heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.markdown-preview h1 {
+  font-family: "Roboto Slab", serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.markdown-preview h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.markdown-preview h3 {
+  font-family: "Roboto Slab", serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.markdown-preview h4 {
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.markdown-preview h5 {
+  font-family: "Roboto Slab", serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.markdown-preview h6 {
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--orange);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+}
+
+.markdown-preview p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.markdown-preview p:first-child {
+  margin-top: 0;
+}
+
+.markdown-preview p,
+.markdown-preview li {
+  font-family: "Roboto Slab", serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--grey);
+}
+
+.markdown-preview.dark p,
+.markdown-preview.dark li {
+  color: var(--light-grey);
+}
+
+.markdown-preview ol,
+.markdown-preview ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: calc(43px - 8px);
+}
+
+.markdown-preview ul ::marker {
+  color: var(--orange);
+  font-size: 10px;
+}
+
+.markdown-preview li {
+  margin-top: 4px;
+  padding-left: 8px;
+}
+
+.markdown-preview li:first-child {
+  margin-top: 0px;
+}
+
+.markdown-preview strong {
+  font-family: "Roboto Slab", serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.markdown-preview-p-bold {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.markdown-preview code {
+  color: var(--code-color);
+  font-family: "Roboto Mono", monospace;
+  line-height: 24px;
+}
+
+.markdown-preview pre {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 24px;
+  background-color: var(--block-bg);
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.markdown-preview a {
+  font-family: inherit;
+  color: inherit;
+}
+
+.markdown-preview em {
+  font-family: "Roboto Slab", serif;
+}
+
+.markdown-preview blockquote {
+  background-color: var(--block-bg);
+  border-left: 4px solid var(--orange);
+  border-radius: 4px;
+  padding: 24px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.markdown-preview blockquote p {
+  font-weight: 700;
+  margin: 0;
+  color: var(--heading-color) !important;
+}
+
+main.light::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+main.light::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-bg);
+}
+
+main.dark::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+main.dark::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-bg);
+}
+
+/* Scrollbar Styles for Firefox */
+main.light {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+}
+
+main.dark {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+}
+
+/* Optional: Smooth Scrollbar Transition */
+main {
+  transition: background-color 0.5s ease, color 0.5s ease,
+    scrollbar-color 0.5s ease;
+}
+
+@media (min-width: 768px) {
+  main {
+    display: flex;
+  }
+
+  .markdown-content-container {
+    display: block;
+  }
+}
