@@ -6,6 +6,7 @@ import Titlebar from "../../components/Titlebar/Titlebar";
 import MarkdownTextarea from "../../components/MarkdownTextarea/MarkdownTextarea";
 import MarkdownPreview from "../../components/MarkdownPreview/MarkdownPreview";
 import useHomepage from "./hooks/useHomepage";
+import "./Homepage.css";
 
 type Props = {};
 
@@ -22,7 +23,7 @@ const Homepage = (props: Props) => {
   return (
     <div className="app-container">
       <WarningMessage />
-      {showSidebar && <Sidebar />}
+      <Sidebar showSidebar={showSidebar} />
       <Navbar
         setShowSidebar={setShowSidebar}
         showSidebar={showSidebar}

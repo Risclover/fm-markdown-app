@@ -1,5 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body,
+html {
+  min-height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  background: var(--light-black);
+}
+
+main {
+  flex-grow: 1; /* Take up remaining space */
+  overflow-y: auto;
+  margin-top: calc(56px + 42px);
+  height: calc(100vh - 60px - 42px);
+  background-color: var(--background-color);
+}
+
+button {
+  background: none;
+  border: 0;
+  outline: none;
+}
+
+.app-container {
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent body scrolling */
+}
+
+.reg-button {
+  width: 100%;
+  background: var(--orange);
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-width: 40px;
+}
+
+.reg-button:hover {
+  background-color: var(--light-orange);
+}
+
+@media (min-width: 767px) {
+  main {
+    margin-top: calc(72px + 42px);
+    height: calc(100vh - 76px - 42px);
+  }
 }
