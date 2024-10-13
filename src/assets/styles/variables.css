@@ -1,0 +1,50 @@
+:root {
+  --light-orange: #f39765;
+  --orange: #e46643;
+  --white: #ffffff;
+  --lightest-grey: #f5f5f5;
+  --lighter-grey: #e4e4e4;
+  --light-grey: #c1c4cb;
+  --grey: #7c8187;
+  --dark-grey: #5a6069;
+  --darker-grey: #35393f;
+  --darkest-grey: #2b2d31;
+  --light-black: #1d1f22;
+  --black: #151619;
+}
+
+body.light {
+  --warning-background-color: #ffffff;
+  --warning-color: var(--grey);
+  --warning-heading-color: var(--darker-grey);
+  --warning-overlay-bg: var(--black);
+}
+
+body.dark {
+  --warning-background-color: var(--light-black);
+  --warning-heading-color: #ffffff;
+  --warning-color: var(--light-grey);
+  --warning-overlay-bg: var(--grey);
+}
+
+main.light {
+  --background-color: #ffffff;
+  --markdown-color: #35393f;
+  --preview-color: #7c8187;
+  --heading-color: #35393f;
+  --block-bg: #f5f5f5;
+  --code-color: #35393f;
+  --scrollbar-bg: #f1f1f1;
+  --scrollbar-thumb: #c1c1c1;
+}
+
+main.dark {
+  --background-color: #151619;
+  --markdown-color: #c1c4cb;
+  --preview-color: #c1c4cb;
+  --heading-color: #ffffff;
+  --block-bg: #2b2d31;
+  --code-color: #ffffff;
+  --scrollbar-bg: #2b2b2b;
+  --scrollbar-thumb: #555555;
+}
