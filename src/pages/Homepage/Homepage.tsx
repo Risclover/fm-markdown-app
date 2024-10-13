@@ -34,7 +34,13 @@ const Homepage = (props: Props) => {
           currentFile={currentFile}
         />
       )}
-      <Sidebar showSidebar={showSidebar} />
+      <Sidebar
+        showSidebar={showSidebar}
+        setShowSidebar={setShowSidebar}
+        setMarkdown={setMarkdown}
+        setFileTitle={setFileTitle}
+        setCurrentFile={setCurrentFile}
+      />
       <div className={`main-container ${showSidebar ? "shifted" : ""}`}>
         <Navbar
           setShowSidebar={setShowSidebar}
