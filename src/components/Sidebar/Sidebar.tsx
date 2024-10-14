@@ -10,7 +10,12 @@ type Props = {
   setFileTitle: React.Dispatch<SetStateAction<string>>;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setCurrentFile: React.Dispatch<
-    SetStateAction<{ createdAt: string; title: string; content: string }>
+    SetStateAction<{
+      id: string;
+      createdAt: string;
+      title: string;
+      content: string;
+    }>
   >;
 };
 

@@ -2,7 +2,12 @@ import React, { SetStateAction, useEffect, useState } from "react";
 
 type Props = {
   setCurrentFile: React.Dispatch<
-    SetStateAction<{ title: string; content: string; createdAt: string }>
+    SetStateAction<{
+      id: string;
+      title: string;
+      content: string;
+      createdAt: string;
+    }>
   >;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
@@ -16,7 +21,7 @@ const useMyDocuments = ({
   setShowSidebar,
 }: Props) => {
   const [files, setFiles] = useState<
-    { title: string; content: string; createdAt: string; id: number }[]
+    { title: string; content: string; createdAt: string; id: string }[]
   >([]);
 
   const formatDate = (dateString: string | null | undefined) => {
@@ -35,7 +40,7 @@ const useMyDocuments = ({
   };
 
   const handleNewDocument = () => {
-    setCurrentFile({ title: "", createdAt: "", content: "" });
+    setCurrentFile({ id: "", title: "", createdAt: "", content: "" });
     setMarkdown("");
     setFileTitle("");
     setShowSidebar(false);

@@ -5,7 +5,12 @@ type Props = {
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
   setCurrentFile: React.Dispatch<
-    SetStateAction<{ title: string; content: string; createdAt: string }>
+    SetStateAction<{
+      id: string;
+      title: string;
+      content: string;
+      createdAt: string;
+    }>
   >;
 };
 
@@ -17,7 +22,7 @@ const useDeleteDocumentWarning = ({
 }: Props) => {
   const handleDelete = () => {
     setShowDeleteWarning(false);
-    setCurrentFile({ title: "", content: "", createdAt: "" });
+    setCurrentFile({ id: "", title: "", content: "", createdAt: "" });
     setMarkdown("");
     setFileTitle("");
   };

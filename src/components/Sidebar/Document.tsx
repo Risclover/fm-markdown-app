@@ -1,12 +1,17 @@
 import React, { SetStateAction } from "react";
-import DocumentIcon from "../../assets/icon-document.svg";
+import DocumentIcon from "../../assets/images/icon-document.svg";
 
 type Props = {
   date: string;
   name: string;
-  file: { id: number; createdAt: string; title: string; content: string };
+  file: { id: string; createdAt: string; title: string; content: string };
   setCurrentFile: React.Dispatch<
-    SetStateAction<{ createdAt: string; title: string; content: string }>
+    SetStateAction<{
+      id: string;
+      createdAt: string;
+      title: string;
+      content: string;
+    }>
   >;
 };
 

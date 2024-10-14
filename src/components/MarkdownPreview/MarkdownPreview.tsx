@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
+import { ThemeContext } from "../../context/ThemeContext";
 
-type Props = {};
+type Props = {
+  markdown: string;
+};
 
-const MarkdownPreview = (props: Props) => {
-  return <div>MarkdownPreview</div>;
+const MarkdownPreview = ({ markdown }: Props) => {
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <div className={`markdown-preview ${theme}`}>
+      <Markdown
+        rehypePlugins={[rehypeRaw]}
+        remarkPlugins={[remarkBreaks, remarkGfm]}
+      >
+        {markdown}
+      </Markdown>
+    </div>
+  );
 };
 
 export default MarkdownPreview;

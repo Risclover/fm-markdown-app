@@ -48,10 +48,13 @@ const Homepage = (props: Props) => {
           fileTitle={fileTitle}
           setFileTitle={setFileTitle}
           setShowDeleteWarning={setShowDeleteWarning}
+          markdown={markdown}
+          currentFile={currentFile}
+          setCurrentFile={setCurrentFile}
         />
         <Titlebar />
         <MarkdownTextarea />
-        <MarkdownPreview />
+        <MarkdownPreview markdown={markdown} />
       </div>
     </div>
   );

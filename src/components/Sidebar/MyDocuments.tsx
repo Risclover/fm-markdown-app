@@ -4,7 +4,12 @@ import Document from "./Document";
 
 type Props = {
   setCurrentFile: React.Dispatch<
-    SetStateAction<{ title: string; content: string; createdAt: string }>
+    SetStateAction<{
+      id: string;
+      title: string;
+      content: string;
+      createdAt: string;
+    }>
   >;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
