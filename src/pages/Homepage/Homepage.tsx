@@ -57,7 +57,11 @@ const Homepage = () => {
           setShowPreview={setShowPreview}
           title={!showPreview ? "Markdown" : "Preview"}
         />
-        <MarkdownTextarea />
+        <MarkdownTextarea
+          showPreview={showPreview}
+          markdown={markdown}
+          setMarkdown={setMarkdown}
+        />
         <MarkdownPreview markdown={markdown} />
       </div>
     </div>
