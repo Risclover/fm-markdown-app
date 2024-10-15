@@ -1,5 +1,5 @@
 // ThemeContext.tsx
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 
 // Define the shape of the ThemeContext
 interface ThemeContextType {
