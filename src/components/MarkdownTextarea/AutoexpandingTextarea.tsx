@@ -1,16 +1,27 @@
-import { useRef } from "react";
+import React, { SetStateAction, useRef } from "react";
 import useAutoexpandingTextarea from "./hooks/useAutoexpandingTextarea";
 
-const AutoExpandingTextarea = () => {
+type Props = {
+  markdown: string;
+  setMarkdown: React.Dispatch<SetStateAction<string>>;
+};
+
+const AutoExpandingTextarea = ({ markdown, setMarkdown }: Props) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const { handleChange, textareaValue } = useAutoexpandingTextarea({
-    textareaRef,
-  });
+  const { handleChange, handleKeyDown, handleMouseUp } =
+    useAutoexpandingTextarea({
+      textareaRef,
+      markdown,
+      setMarkdown,
+    });
+
   return (
     <textarea
       ref={textareaRef}
-      value={textareaValue}
+      value={markdown}
       onChange={handleChange}
+      onKeyDown={handleKeyDown}
+      onMouseUp={handleMouseUp}
       placeholder="Start typing..."
       style={{
         boxSizing: "content-box",
