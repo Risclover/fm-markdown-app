@@ -7,7 +7,7 @@ type Props = {
     SetStateAction<{
       title: string;
       content: string;
-      creatdAt: string;
+      createdAt: string;
       id: string;
     }>
   >;

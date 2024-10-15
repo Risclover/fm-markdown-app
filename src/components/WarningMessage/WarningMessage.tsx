@@ -1,4 +1,3 @@
-import React from "react";
 import "./WarningMessage.css";
 
 type Props = {

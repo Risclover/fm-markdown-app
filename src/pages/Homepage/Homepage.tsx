@@ -4,12 +4,10 @@ import Titlebar from "../../components/Titlebar/Titlebar";
 import MarkdownTextarea from "../../components/MarkdownTextarea/MarkdownTextarea";
 import MarkdownPreview from "../../components/MarkdownPreview/MarkdownPreview";
 import useHomepage from "./hooks/useHomepage";
-import "./Homepage.css";
 import DeleteDocumentWarning from "../../components/WarningMessage/DeleteDocumentWarning/DeleteDocumentWarning";
+import "./Homepage.css";
 
-type Props = {};
-
-const Homepage = (props: Props) => {
+const Homepage = () => {
   const {
     showSidebar,
     setShowSidebar,
@@ -21,6 +19,8 @@ const Homepage = (props: Props) => {
     setShowDeleteWarning,
     currentFile,
     setCurrentFile,
+    showPreview,
+    setShowPreview,
   } = useHomepage();
 
   return (
@@ -52,7 +52,11 @@ const Homepage = (props: Props) => {
           currentFile={currentFile}
           setCurrentFile={setCurrentFile}
         />
-        <Titlebar />
+        <Titlebar
+          showPreview={showPreview}
+          setShowPreview={setShowPreview}
+          title={!showPreview ? "Markdown" : "Preview"}
+        />
         <MarkdownTextarea />
         <MarkdownPreview markdown={markdown} />
       </div>
