@@ -2,6 +2,7 @@ import React, { SetStateAction } from "react";
 import WarningMessage from "../WarningMessage";
 import useDeleteDocumentWarning from "./hooks/useDeleteDocumentWarning";
 import "./DeleteDocumentWarning.css";
+import { MarkdownFile } from "../../Sidebar/MyDocuments";
 
 type Props = {
   setCurrentFile: React.Dispatch<
@@ -21,6 +22,8 @@ type Props = {
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
   setShowDeleteWarning: React.Dispatch<SetStateAction<boolean>>;
+  files: MarkdownFile[];
+  setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
 };
 
 const DeleteDocumentWarning = ({
@@ -29,15 +32,20 @@ const DeleteDocumentWarning = ({
   setFileTitle,
   setShowDeleteWarning,
   setCurrentFile,
+  files,
+  setFiles,
 }: Props) => {
   const { handleDelete } = useDeleteDocumentWarning({
     setMarkdown,
     setFileTitle,
     setShowDeleteWarning,
     setCurrentFile,
+    files,
+    setFiles,
+    currentFile,
   });
   return (
-    <WarningMessage>
+    <WarningMessage setShowDeleteWarning={setShowDeleteWarning}>
       <div className="delete-document-warning">
         <h4>Delete this document?</h4>
         <p>

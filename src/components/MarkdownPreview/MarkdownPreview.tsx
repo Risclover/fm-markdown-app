@@ -7,9 +7,15 @@ import { ThemeContext } from "../../context/ThemeContext";
 
 type Props = {
   markdown: string;
+  currentFile: {
+    id: string;
+    content: string;
+    title: string;
+    createdAt: string;
+  };
 };
 
-const MarkdownPreview = ({ markdown }: Props) => {
+const MarkdownPreview = ({ markdown, currentFile }: Props) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -18,7 +24,7 @@ const MarkdownPreview = ({ markdown }: Props) => {
         rehypePlugins={[rehypeRaw]}
         remarkPlugins={[remarkBreaks, remarkGfm]}
       >
-        {markdown}
+        {markdown || currentFile?.content}
       </Markdown>
     </div>
   );

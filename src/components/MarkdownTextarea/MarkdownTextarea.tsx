@@ -9,7 +9,11 @@ type Props = {
   showPreview: boolean;
 };
 
-const MarkdownContent = ({ markdown, setMarkdown, showPreview }: Props) => {
+const MarkdownContent = ({
+  markdown,
+  setMarkdown,
+  showPreview,
+}: Props) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -18,7 +22,10 @@ const MarkdownContent = ({ markdown, setMarkdown, showPreview }: Props) => {
         !showPreview ? "show" : ""
       }`}
     >
-      <AutoExpandingTextarea markdown={markdown} setMarkdown={setMarkdown} />
+      <AutoExpandingTextarea
+        markdown={markdown}
+        setMarkdown={setMarkdown}
+      />
     </div>
   );
 };

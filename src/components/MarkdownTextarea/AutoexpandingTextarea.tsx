@@ -25,13 +25,12 @@ const AutoExpandingTextarea = ({ markdown, setMarkdown }: Props) => {
       placeholder="Start typing..."
       style={{
         boxSizing: "content-box",
-        width: "95%",
         overflowY: "hidden",
         resize: "none",
         fontSize: "14px",
         border: "0",
         outline: "none",
-        padding: "10px",
+        paddingRight: "16px",
         marginRight: "10px",
         lineHeight: "24px",
         fontWeight: "400",

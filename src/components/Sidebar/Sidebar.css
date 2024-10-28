@@ -18,8 +18,9 @@
 }
 
 .sidebar-menu-btn {
+  max-width: 56px;
+  width: 100%;
   height: 56px;
-  width: 56px;
   background-color: var(--darker-grey);
   display: flex;
   align-items: center;
@@ -132,6 +133,7 @@
   flex-direction: column;
   margin-left: 16px;
   cursor: pointer;
+  overflow-x: hidden;
 }
 
 .document-info-date {
@@ -147,6 +149,9 @@
   font-size: 14px;
   text-transform: lowercase;
   margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .document-info:hover .document-info-name {
@@ -159,7 +164,8 @@
 
 @media (min-width: 768px) {
   .sidebar-menu-btn {
-    width: 72px;
+    max-width: 72px;
+    width: 100%;
     height: 72px;
   }
 

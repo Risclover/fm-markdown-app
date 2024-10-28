@@ -16,6 +16,7 @@ main.dark .markdown-content-container {
   outline: none;
   border: 0;
   width: 100%;
+  border: 1px solid red;
 }
 
 .markdown-preview {
@@ -36,8 +37,8 @@ textarea {
   color: var(--markdown-color);
   background: transparent;
   width: 100%;
-  min-height: calc(100vh - 58px - 42px);
-  border: 0;
+  border: 1px solid red;
+  padding-right: 16px;
 }
 
 .markdown-preview-container {

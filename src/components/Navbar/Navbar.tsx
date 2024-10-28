@@ -6,6 +6,7 @@ import SaveLogo from "../../assets/images/icon-save.svg";
 import useNavbar from "./hooks/useNavbar";
 import FileTitle from "./FileTitle";
 import "./Navbar.css";
+import { LuFileDown } from "react-icons/lu";
 
 type Props = {
   fileTitle: string;
@@ -28,6 +29,12 @@ type Props = {
       createdAt: string;
     }>
   >;
+  files: { content: string; id: string; title: string; createdAt: string }[];
+  setFiles: React.Dispatch<
+    SetStateAction<
+      { content: string; id: string; title: string; createdAt: string }[]
+    >
+  >;
 };
 
 const Navbar = ({
@@ -39,11 +46,15 @@ const Navbar = ({
   currentFile,
   setCurrentFile,
   markdown,
+  files,
+  setFiles,
 }: Props) => {
-  const { handleDelete, handleSave } = useNavbar({
+  const { handleDelete, handleSave, handleDownload } = useNavbar({
     setShowDeleteWarning,
     currentFile,
     setCurrentFile,
+    files,
+    setFiles,
   });
   return (
     <div className="navbar-container">
@@ -56,12 +67,15 @@ const Navbar = ({
         <FileTitle fileTitle={fileTitle} setFileTitle={setFileTitle} />
       </div>
       <div className="navbar-container-right">
+        <button className="download-btn" onClick={handleDownload}>
+          <LuFileDown />
+        </button>
         <button className="delete-btn" onClick={handleDelete}>
           <img src={TrashLogo} alt="Trash" />
         </button>
         <button
           className="save-btn reg-button"
-          onClick={() => handleSave(fileTitle, markdown)}
+          onClick={() => handleSave(currentFile, fileTitle, markdown)}
         >
           <img src={SaveLogo} alt="Save" />
           <span className="save-btn-text">Save Changes</span>

@@ -6,8 +6,12 @@ import MarkdownPreview from "../../components/MarkdownPreview/MarkdownPreview";
 import useHomepage from "./hooks/useHomepage";
 import DeleteDocumentWarning from "../../components/WarningMessage/DeleteDocumentWarning/DeleteDocumentWarning";
 import "./Homepage.css";
+import { useContext, useEffect } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Homepage = () => {
+  const { theme } = useContext(ThemeContext);
+
   const {
     showSidebar,
     setShowSidebar,
@@ -21,7 +25,13 @@ const Homepage = () => {
     setCurrentFile,
     showPreview,
     setShowPreview,
+    files,
+    setFiles,
   } = useHomepage();
+
+  useEffect(() => {
+    console.log("current file:", currentFile);
+  }, [currentFile]);
 
   return (
     <div className="app-container">
@@ -32,6 +42,8 @@ const Homepage = () => {
           setShowDeleteWarning={setShowDeleteWarning}
           setCurrentFile={setCurrentFile}
           currentFile={currentFile}
+          files={files}
+          setFiles={setFiles}
         />
       )}
       <Sidebar
@@ -40,6 +52,8 @@ const Homepage = () => {
         setMarkdown={setMarkdown}
         setFileTitle={setFileTitle}
         setCurrentFile={setCurrentFile}
+        files={files}
+        setFiles={setFiles}
       />
       <div className={`main-container ${showSidebar ? "shifted" : ""}`}>
         <Navbar
@@ -51,18 +65,30 @@ const Homepage = () => {
           markdown={markdown}
           currentFile={currentFile}
           setCurrentFile={setCurrentFile}
+          files={files}
+          setFiles={setFiles}
         />
         <Titlebar
           showPreview={showPreview}
           setShowPreview={setShowPreview}
           title={!showPreview ? "Markdown" : "Preview"}
         />
-        <MarkdownTextarea
-          showPreview={showPreview}
-          markdown={markdown}
-          setMarkdown={setMarkdown}
-        />
-        <MarkdownPreview markdown={markdown} />
+        <main className={theme}>
+          {!showPreview && (
+            <MarkdownTextarea
+              showPreview={showPreview}
+              markdown={markdown}
+              setMarkdown={setMarkdown}
+            />
+          )}
+          <div
+            className={`markdown-preview-container ${
+              showPreview ? "show" : ""
+            }`}
+          >
+            <MarkdownPreview markdown={markdown} currentFile={currentFile} />
+          </div>
+        </main>
       </div>
     </div>
   );

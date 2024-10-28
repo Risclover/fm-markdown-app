@@ -17,6 +17,12 @@ type Props = {
       content: string;
     }>
   >;
+  files: { content: string; title: string; createdAt: string; id: string }[];
+  setFiles: React.Dispatch<
+    SetStateAction<
+      { content: string; title: string; createdAt: string; id: string }[]
+    >
+  >;
 };
 
 const Sidebar = ({
@@ -25,6 +31,8 @@ const Sidebar = ({
   setFileTitle,
   setMarkdown,
   setCurrentFile,
+  files,
+  setFiles,
 }: Props) => {
   return (
     <div className={`sidebar${showSidebar ? " open" : ""}`}>
@@ -35,6 +43,8 @@ const Sidebar = ({
           setMarkdown={setMarkdown}
           setFileTitle={setFileTitle}
           setShowSidebar={setShowSidebar}
+          files={files}
+          setFiles={setFiles}
         />
       </div>
       <DarkLightToggle />

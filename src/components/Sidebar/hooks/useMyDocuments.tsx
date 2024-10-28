@@ -1,52 +1,62 @@
-import React, { SetStateAction, useEffect, useState } from "react";
+// hooks/useMyDocuments.ts
+import React, { useState, useEffect, SetStateAction } from "react";
 
-type Props = {
-  setCurrentFile: React.Dispatch<
-    SetStateAction<{
-      id: string;
-      title: string;
-      content: string;
-      createdAt: string;
-    }>
+export interface MarkdownFile {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: string;
+}
+
+interface UseMyDocumentsProps {
+  setCurrentFile: React.Dispatch<React.SetStateAction<MarkdownFile>>;
+  setMarkdown: React.Dispatch<React.SetStateAction<string>>;
+  setFileTitle: React.Dispatch<React.SetStateAction<string>>;
+  setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+  files: { content: string; title: string; id: string; createdAt: string }[];
+  setFiles: React.Dispatch<
+    SetStateAction<
+      { content: string; title: string; id: string; createdAt: string }[]
+    >
   >;
-  setMarkdown: React.Dispatch<SetStateAction<string>>;
-  setFileTitle: React.Dispatch<SetStateAction<string>>;
-  setShowSidebar: React.Dispatch<SetStateAction<boolean>>;
-};
+}
+
+interface UseMyDocumentsReturn {
+  formatDate: (dateString: string) => string;
+  handleNewDocument: () => void;
+  files: MarkdownFile[];
+  setFiles: React.Dispatch<React.SetStateAction<MarkdownFile[]>>;
+}
 
 const useMyDocuments = ({
   setCurrentFile,
   setMarkdown,
   setFileTitle,
   setShowSidebar,
-}: Props) => {
-  const [files, setFiles] = useState<
-    { title: string; content: string; createdAt: string; id: string }[]
-  >([]);
-
-  const formatDate = (dateString: string | null | undefined) => {
-    if (!dateString) return "N/A"; // Handle null or undefined dates
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) return "Invalid Date"; // Handle invalid dates
-
-    // Define options for toLocaleDateString
+  files,
+  setFiles,
+}: UseMyDocumentsProps): UseMyDocumentsReturn => {
+  const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
-      day: "2-digit",
-      month: "long",
       year: "numeric",
+      month: "short",
+      day: "numeric",
     };
-    // Use 'en-GB' locale for "07 October 2024" format
-    return date.toLocaleDateString("en-GB", options); // "07 October 2024"
+    return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
   const handleNewDocument = () => {
-    setCurrentFile({ id: "", title: "", createdAt: "", content: "" });
+    setCurrentFile({ title: "", id: "", content: "", createdAt: "" });
     setMarkdown("");
     setFileTitle("");
     setShowSidebar(false);
   };
 
-  return { files, setFiles, handleNewDocument, formatDate };
+  useEffect(() => {
+    localStorage.setItem("markdown-files", JSON.stringify(files));
+  }, [files]);
+
+  return { formatDate, handleNewDocument, files, setFiles };
 };
 
 export default useMyDocuments;

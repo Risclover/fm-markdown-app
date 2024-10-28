@@ -1,5 +1,6 @@
 import React, { SetStateAction } from "react";
 import DocumentIcon from "../../assets/images/icon-document.svg";
+import { formatDate } from "./utils/formatDate";
 
 type Props = {
   date: string;
@@ -22,7 +23,7 @@ const Document = ({ date, name, file, setCurrentFile }: Props) => {
         <img src={DocumentIcon} alt="Document" />
       </span>
       <div className="document-info">
-        <span className="document-info-date">{date}</span>
+        <span className="document-info-date">{formatDate(date)}</span>
         <span className="document-info-name medium-heading">{file.title}</span>
       </div>
     </div>

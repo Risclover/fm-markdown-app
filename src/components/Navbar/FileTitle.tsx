@@ -15,11 +15,14 @@ const FileTitle = ({ fileTitle, setFileTitle }: Props) => {
       <img src={DocumentIcon} alt="Document" />
       <div className="navbar-file-name-right">
         <span className="document-name">Document Name</span>
-        <input
-          className="medium-heading"
-          onChange={updateTitle}
-          value={fileTitle}
-        />
+        <div className="file-name">
+          <input
+            placeholder="welcome.md"
+            className="medium-heading"
+            onChange={updateTitle}
+            value={fileTitle}
+          />
+        </div>
       </div>
     </div>
   );

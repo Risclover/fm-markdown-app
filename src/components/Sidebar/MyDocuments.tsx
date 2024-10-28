@@ -1,33 +1,54 @@
-import React, { SetStateAction, useEffect, useState } from "react";
+// MyDocuments.tsx
+import React, { SetStateAction } from "react";
 import useMyDocuments from "./hooks/useMyDocuments";
 import Document from "./Document";
 
+export interface MarkdownFile {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: string;
+}
+
 type Props = {
-  setCurrentFile: React.Dispatch<
-    SetStateAction<{
-      id: string;
-      title: string;
-      content: string;
-      createdAt: string;
-    }>
-  >;
+  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile>>;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
   setShowSidebar: React.Dispatch<SetStateAction<boolean>>;
+  files: { content: string; title: string; id: string; createdAt: string }[];
+  setFiles: React.Dispatch<
+    SetStateAction<
+      { content: string; title: string; id: string; createdAt: string }[]
+    >
+  >;
 };
 
-const MyDocuments = ({
+const MyDocuments: React.FC<Props> = ({
   setCurrentFile,
   setMarkdown,
   setFileTitle,
   setShowSidebar,
-}: Props) => {
-  const { formatDate, handleNewDocument, files, setFiles } = useMyDocuments({
+  files,
+  setFiles,
+}) => {
+  const { formatDate, handleNewDocument } = useMyDocuments({
     setCurrentFile,
     setMarkdown,
     setFileTitle,
     setShowSidebar,
+    files,
+    setFiles,
   });
+
+  // Optional: Log the type and content of files for debugging
+  console.log(
+    "Files:",
+    files,
+    "Type of files:",
+    typeof files,
+    "Is Array:",
+    Array.isArray(files)
+  );
 
   return (
     <div className="my-documents-container">

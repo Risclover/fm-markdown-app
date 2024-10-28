@@ -15,11 +15,13 @@
   color: var(--white);
   gap: 16px;
   margin-left: 24px;
+  width: 100%;
 }
 
 .navbar-container-left {
   display: flex;
   align-items: center;
+  width: 50%;
 }
 
 .navbar-container-right {
@@ -73,6 +75,7 @@
 .navbar-file-name-right {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .document-name {
@@ -88,7 +91,40 @@
   display: none;
 }
 
+.download-btn {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  color: var(--grey);
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.download-btn:hover {
+  color: var(--orange);
+}
+
+.file-name {
+  position: relative;
+}
+.file-name input {
+  max-width: 400px;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.extension {
+  position: absolute;
+  right: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
 @media (min-width: 768px) {
+  .file-name {
+    max-width: 400px;
+  }
   .navbar-container {
     height: 72px;
     display: flex;
