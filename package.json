@@ -1,11 +1,14 @@
 {
   "name": "fm-markdown-app",
+  "homepage": "https://risclover.github.io/fm-markdown-app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
