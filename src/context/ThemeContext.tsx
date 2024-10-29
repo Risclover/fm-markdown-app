@@ -2,7 +2,7 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 
 // Define the shape of the ThemeContext
-interface ThemeContextType {
+export interface ThemeContextType {
   theme: string;
   toggleTheme: () => void;
 }

@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import { WarningMessage } from "../WarningMessage";
 import { useDeleteDocumentWarning } from "./hooks";
-import type { MarkdownFile } from "../../../hooks";
+import type { MarkdownFile } from "../../../types";
 import "./DeleteDocumentWarning.css";
 
 type Props = {

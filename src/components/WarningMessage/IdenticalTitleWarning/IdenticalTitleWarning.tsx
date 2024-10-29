@@ -1,5 +1,5 @@
 import React, { SetStateAction } from "react";
-import {WarningMessage} from "../WarningMessage";
+import { WarningMessage } from "../WarningMessage";
 
 type Props = {
   fileTitle: string;
@@ -24,7 +24,7 @@ export const IdenticalTitleWarning = ({
         )}
         {warningType === "dot" && (
           <p>
-            The title `{fileTitle.trim()}` contains a dot . somewhere in the
+            The title `{fileTitle.trim()}` contains a dot somewhere in the
             title. Titles cannot contain dots/periods. Please remove before
             saving.
           </p>

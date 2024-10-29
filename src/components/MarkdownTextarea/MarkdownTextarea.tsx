@@ -21,6 +21,7 @@ export const MarkdownTextarea = ({
       className={`markdown-content-container ${theme} ${
         !showPreview ? "show" : ""
       }`}
+      data-testid="markdown-content-container"
     >
       <AutoexpandingTextarea markdown={markdown} setMarkdown={setMarkdown} />
     </div>

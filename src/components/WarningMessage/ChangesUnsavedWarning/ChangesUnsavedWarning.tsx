@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 import { WarningMessage } from "../WarningMessage";
-import type { MarkdownFile } from "../../../hooks";
+import type { MarkdownFile } from "../../../types";
 
 type Props = {
   changesSaved: boolean;

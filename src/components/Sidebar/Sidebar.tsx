@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 import { DarkLightToggle, MyDocuments } from "../../components";
-import type { MarkdownFile } from "../../hooks";
+import type { MarkdownFile } from "../../types";
 import { Logos } from "../../assets";
 import "./Sidebar.css";
 
@@ -32,7 +32,10 @@ export const Sidebar = ({
   currentFile,
 }: Props) => {
   return (
-    <div className={`sidebar${showSidebar ? " open" : ""}`}>
+    <div
+      className={`sidebar${showSidebar ? " open" : ""}`}
+      role="complementary"
+    >
       <div className="sidebar-top">
         <img className="logo-show" src={Logos.Logo} alt="Markdown" />
         <MyDocuments

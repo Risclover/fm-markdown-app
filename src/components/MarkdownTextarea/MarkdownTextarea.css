@@ -37,9 +37,15 @@ textarea {
   color: var(--markdown-color);
   background: transparent;
   width: 100%;
-  border: 1px solid red;
-  padding-right: 16px;
   min-height: calc(1157px - 42px);
+  overflow-y: hidden;
+  resize: none;
+  border: 0;
+  outline: none;
+  padding-right: 16px;
+  margin-right: 10px;
+  line-height: 24px;
+  font-weight: 400;
 }
 
 .markdown-preview-container {

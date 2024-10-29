@@ -4,7 +4,7 @@ import { LuFileDown } from "react-icons/lu";
 import { SidebarMenuBtn, FileTitle } from "../../components";
 import { useNavbar } from "./hooks";
 import { Logos } from "../../assets";
-import type { MarkdownFile } from "../../hooks";
+import type { MarkdownFile } from "../../types";
 import "./Navbar.css";
 
 type Props = {
@@ -63,7 +63,7 @@ export const Navbar = ({
         <FileTitle fileTitle={fileTitle} setFileTitle={setFileTitle} />
       </div>
       <div className="navbar-container-right">
-        {currentFile?.id !== "" && (
+        {currentFile && currentFile.id !== "" && (
           <div className="navbar-little-btns">
             <button
               title="Download file"

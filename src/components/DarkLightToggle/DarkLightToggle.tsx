@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { Logos } from "../../assets";
 import { DarkLightSwitch } from "./DarkLightSwitch";
 import { ThemeContext } from "../../context";
+import { Logos } from "../../assets";
 import "./DarkLightToggle.css";
 
 export const DarkLightToggle = () => {

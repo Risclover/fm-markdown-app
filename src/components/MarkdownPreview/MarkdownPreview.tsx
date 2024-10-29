@@ -3,22 +3,17 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
-import { ThemeContext } from "../../context";
-import type { MarkdownFile } from "../../hooks";
+import { ThemeContext, useFile } from "../../context";
+import type { MarkdownFile } from "../../types";
 
 type Props = {
-  markdown: string;
-  currentFile: MarkdownFile | null;
   showPreview: boolean;
 };
 
-export const MarkdownPreview = ({
-  markdown,
-  currentFile,
-  showPreview,
-}: Props) => {
+export const MarkdownPreview = ({ showPreview }: Props) => {
   const previewRef = useRef<HTMLDivElement>(null);
   const { theme } = useContext(ThemeContext);
+  const { markdown, currentFile } = useFile();
 
   useEffect(() => {
     if (previewRef.current) {
@@ -37,8 +32,12 @@ export const MarkdownPreview = ({
     <div
       className={`markdown-preview-container ${showPreview ? "show" : ""}`}
       ref={previewRef}
+      data-testid="markdown-preview-container" // Added for testing
     >
-      <div className={`markdown-preview ${theme}`}>
+      <div
+        className={`markdown-preview ${theme}`}
+        data-testid="markdown-preview"
+      >
         <Markdown
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkBreaks, remarkGfm]}

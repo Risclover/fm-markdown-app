@@ -21,18 +21,6 @@ export const AutoexpandingTextarea = ({ markdown, setMarkdown }: Props) => {
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       placeholder="Start typing..."
-      style={{
-        boxSizing: "content-box",
-        overflowY: "hidden",
-        resize: "none",
-        fontSize: "14px",
-        border: "0",
-        outline: "none",
-        paddingRight: "16px",
-        marginRight: "10px",
-        lineHeight: "24px",
-        fontWeight: "400",
-      }}
     />
   );
 };
