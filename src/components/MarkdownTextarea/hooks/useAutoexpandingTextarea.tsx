@@ -6,7 +6,7 @@ type Props = {
   setMarkdown: React.Dispatch<SetStateAction<string>>;
 };
 
-const useAutoexpandingTextarea = ({
+export const useAutoexpandingTextarea = ({
   textareaRef,
   markdown,
   setMarkdown,
@@ -217,5 +217,3 @@ const useAutoexpandingTextarea = ({
 
   return { handleChange, handleKeyDown };
 };
-
-export default useAutoexpandingTextarea;

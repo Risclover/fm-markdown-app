@@ -1,5 +1,4 @@
-// hooks/useMyDocuments.ts
-import React, { useState, useEffect, SetStateAction } from "react";
+import React, { useEffect, SetStateAction } from "react";
 
 export interface MarkdownFile {
   id: string;
@@ -27,7 +26,7 @@ interface UseMyDocumentsReturn {
   setFiles: React.Dispatch<React.SetStateAction<MarkdownFile[]>>;
 }
 
-const useMyDocuments = ({
+export const useMyDocuments = ({
   setCurrentFile,
   setMarkdown,
   setFileTitle,
@@ -65,5 +64,3 @@ const useMyDocuments = ({
 
   return { formatDate, handleNewDocument, files, setFiles };
 };
-
-export default useMyDocuments;

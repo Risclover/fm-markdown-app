@@ -5,9 +5,11 @@
   height: 24px;
   z-index: 100;
 }
+
 .toggle-switch input[type="checkbox"] {
   display: none;
 }
+
 .toggle-switch .switch {
   position: absolute;
   cursor: pointer;
@@ -19,6 +21,7 @@
   left: 0;
   transition: background-color 0.2s ease;
 }
+
 .toggle-switch .switch::before {
   position: absolute;
   content: "";
@@ -30,6 +33,7 @@
   border-radius: 50%;
   transition: transform 0.3s ease;
 }
+
 .toggle-switch input[type="checkbox"]:checked + .switch::before {
   transform: translateX(25px);
 }
@@ -46,7 +50,7 @@
   filter: invert(36%) sepia(17%) saturate(262%) hue-rotate(177deg)
     brightness(95%) contrast(90%);
   cursor: pointer;
-  transition: filter 0.3s ease; /* Adds smooth transition for filter changes */
+  transition: filter 0.3s ease;
 }
 
 .active {

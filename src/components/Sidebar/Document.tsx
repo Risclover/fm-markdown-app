@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
-import DocumentIcon from "../../assets/images/icon-document.svg";
-import { formatDate } from "./utils/formatDate";
 import { MarkdownFile } from "./MyDocuments";
+import { formatDate } from "./utils";
+import { Logos } from "../../assets";
 
 type Props = {
   date: string;
@@ -13,7 +13,7 @@ type Props = {
   currentFile: MarkdownFile | null;
 };
 
-const Document = ({
+export const Document = ({
   date,
   file,
   setCurrentFile,
@@ -37,7 +37,7 @@ const Document = ({
   return (
     <div className={`document-container`} onClick={handleClick}>
       <span className="document-icon">
-        <img src={DocumentIcon} alt="Document" />
+        <img src={Logos.IconDocument} alt="Document" />
       </span>
       <div
         className={`document-info ${currentFile === file ? "current-doc" : ""}`}
@@ -54,5 +54,3 @@ const Document = ({
     </div>
   );
 };
-
-export default Document;

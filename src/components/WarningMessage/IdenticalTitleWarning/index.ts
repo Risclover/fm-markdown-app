@@ -1,0 +1,1 @@
+export { IdenticalTitleWarning } from "./IdenticalTitleWarning";

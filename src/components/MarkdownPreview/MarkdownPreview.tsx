@@ -3,8 +3,8 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
-import { ThemeContext } from "../../context/ThemeContext";
-import { MarkdownFile } from "../Sidebar/MyDocuments";
+import { ThemeContext } from "../../context";
+import type { MarkdownFile } from "../../hooks";
 
 type Props = {
   markdown: string;
@@ -12,7 +12,11 @@ type Props = {
   showPreview: boolean;
 };
 
-const MarkdownPreview = ({ markdown, currentFile, showPreview }: Props) => {
+export const MarkdownPreview = ({
+  markdown,
+  currentFile,
+  showPreview,
+}: Props) => {
   const previewRef = useRef<HTMLDivElement>(null);
   const { theme } = useContext(ThemeContext);
 
@@ -45,5 +49,3 @@ const MarkdownPreview = ({ markdown, currentFile, showPreview }: Props) => {
     </div>
   );
 };
-
-export default MarkdownPreview;

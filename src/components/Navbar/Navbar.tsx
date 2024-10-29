@@ -1,14 +1,11 @@
 import React, { SetStateAction } from "react";
-import SidebarMenuBtn from "../Sidebar/SidebarMenuBtn";
-import TrashLogo from "../../assets/images/icon-delete.svg";
-import Logo from "../../assets/images/logo.svg";
-import SaveLogo from "../../assets/images/icon-save.svg";
-import useNavbar from "./hooks/useNavbar";
-import FileTitle from "./FileTitle";
-import "./Navbar.css";
-import { LuFileDown } from "react-icons/lu";
 import { FaCheck } from "react-icons/fa6";
-import { MarkdownFile } from "../Sidebar/MyDocuments";
+import { LuFileDown } from "react-icons/lu";
+import { SidebarMenuBtn, FileTitle } from "../../components";
+import { useNavbar } from "./hooks";
+import { Logos } from "../../assets";
+import type { MarkdownFile } from "../../hooks";
+import "./Navbar.css";
 
 type Props = {
   fileTitle: string;
@@ -27,7 +24,7 @@ type Props = {
   setWarningType: React.Dispatch<SetStateAction<string>>;
 };
 
-const Navbar = ({
+export const Navbar = ({
   fileTitle,
   setFileTitle,
   setShowSidebar,
@@ -62,7 +59,7 @@ const Navbar = ({
           setShowSidebar={setShowSidebar}
           showSidebar={showSidebar}
         />
-        <img className="navbar-logo" src={Logo} alt="Markdown" />
+        <img className="navbar-logo" src={Logos.Logo} alt="Markdown" />
         <FileTitle fileTitle={fileTitle} setFileTitle={setFileTitle} />
       </div>
       <div className="navbar-container-right">
@@ -80,7 +77,7 @@ const Navbar = ({
               className="delete-btn"
               onClick={handleDelete}
             >
-              <img src={TrashLogo} alt="Trash" />
+              <img src={Logos.IconDelete} alt="Trash" />
             </button>
           </div>
         )}
@@ -91,7 +88,7 @@ const Navbar = ({
           {savedText === "Saved!" ? (
             <FaCheck />
           ) : (
-            <img src={SaveLogo} alt="Save" />
+            <img src={Logos.IconSave} alt="Save" />
           )}
           <span className="save-btn-text">{savedText}</span>
           {savedText === "Saved!" && <div></div>}
@@ -100,5 +97,3 @@ const Navbar = ({
     </div>
   );
 };
-
-export default Navbar;

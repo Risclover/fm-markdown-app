@@ -1,13 +1,9 @@
-import React, { useContext, useEffect } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useContext } from "react";
+import { ThemeContext } from "../../context";
 
-type Props = {};
-
-const DarkLightSwitch = (props: Props) => {
+export const DarkLightSwitch = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  useEffect(() => {
-    console.log("theme:", theme, toggleTheme);
-  }, [theme, toggleTheme]);
+
   return (
     <label className="toggle-switch">
       <input
@@ -19,5 +15,3 @@ const DarkLightSwitch = (props: Props) => {
     </label>
   );
 };
-
-export default DarkLightSwitch;

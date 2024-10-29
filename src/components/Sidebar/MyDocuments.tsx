@@ -1,7 +1,6 @@
-// MyDocuments.tsx
 import React, { SetStateAction } from "react";
-import useMyDocuments from "./hooks/useMyDocuments";
-import Document from "./Document";
+import { useMyDocuments } from "./hooks";
+import { Document } from "./Document";
 
 export interface MarkdownFile {
   id: string;
@@ -23,7 +22,7 @@ type Props = {
   currentFile: MarkdownFile | null;
 };
 
-const MyDocuments: React.FC<Props> = ({
+export const MyDocuments: React.FC<Props> = ({
   setCurrentFile,
   setMarkdown,
   setFileTitle,
@@ -71,5 +70,3 @@ const MyDocuments: React.FC<Props> = ({
     </div>
   );
 };
-
-export default MyDocuments;

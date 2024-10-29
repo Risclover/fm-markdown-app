@@ -1,8 +1,7 @@
 import React, { SetStateAction, useContext } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
-import useTitlebar from "./hooks/useTitlebar";
-import ShowPreviewIcon from "../../assets/images/icon-show-preview.svg";
-import HidePreviewIcon from "../../assets/images/icon-hide-preview.svg";
+import { ThemeContext } from "../../context";
+import { useTitlebar } from "./hooks";
+import { Logos } from "../../assets";
 import "./Titlebar.css";
 
 type Props = {
@@ -11,7 +10,7 @@ type Props = {
   title: string;
 };
 
-const Titlebar = ({ showPreview, setShowPreview, title }: Props) => {
+export const Titlebar = ({ showPreview, setShowPreview, title }: Props) => {
   const { theme } = useContext(ThemeContext);
   const { handlePreviewClick } = useTitlebar({ showPreview, setShowPreview });
 
@@ -22,13 +21,13 @@ const Titlebar = ({ showPreview, setShowPreview, title }: Props) => {
         {!showPreview ? (
           <img
             className="show-preview-icon"
-            src={ShowPreviewIcon}
+            src={Logos.IconShowPreview}
             alt="Show Preview"
           />
         ) : (
           <img
             className="hide-preview-icon"
-            src={HidePreviewIcon}
+            src={Logos.IconHidePreview}
             alt="Hide Preview"
           />
         )}
@@ -36,5 +35,3 @@ const Titlebar = ({ showPreview, setShowPreview, title }: Props) => {
     </div>
   );
 };
-
-export default Titlebar;

@@ -1,12 +1,12 @@
 import React, { SetStateAction } from "react";
-import useSidebarMenuBtn from "./hooks/useSidebarMenuBtn";
+import { useSidebarMenuBtn } from "./hooks";
 
 type Props = {
   setShowSidebar: React.Dispatch<SetStateAction<boolean>>;
   showSidebar: boolean;
 };
 
-const SidebarMenuBtn = ({ setShowSidebar, showSidebar }: Props) => {
+export const SidebarMenuBtn = ({ setShowSidebar, showSidebar }: Props) => {
   const { handleSidebarToggle } = useSidebarMenuBtn({
     setShowSidebar,
     showSidebar,
@@ -19,5 +19,3 @@ const SidebarMenuBtn = ({ setShowSidebar, showSidebar }: Props) => {
     </button>
   );
 };
-
-export default SidebarMenuBtn;

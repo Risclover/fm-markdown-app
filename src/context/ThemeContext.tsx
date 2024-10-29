@@ -16,7 +16,6 @@ export const ThemeContext = createContext<ThemeContextType>({
 type Props = {
   children: ReactNode; // Use ReactNode for better type safety
 };
-
 export const ThemeProvider = ({ children }: Props) => {
   // Initialize theme state with a function to avoid SSR issues
   const [theme, setTheme] = useState<string>(() => {

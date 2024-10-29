@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
-import WarningMessage from "../WarningMessage";
-import { MarkdownFile } from "../../Sidebar/MyDocuments";
+import { WarningMessage } from "../WarningMessage";
+import type { MarkdownFile } from "../../../hooks";
 
 type Props = {
   changesSaved: boolean;
@@ -11,8 +11,7 @@ type Props = {
   pendingFile: MarkdownFile | null;
 };
 
-const ChangesUnsavedWarning = ({
-  changesSaved,
+export const ChangesUnsavedWarning = ({
   setChangesSaved,
   setShowChangesUnsavedWarning,
   setCurrentFile,
@@ -51,5 +50,3 @@ const ChangesUnsavedWarning = ({
     </WarningMessage>
   );
 };
-
-export default ChangesUnsavedWarning;

@@ -1,7 +1,7 @@
 import React, { useContext, SetStateAction } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../context";
+import { AutoexpandingTextarea } from "./AutoexpandingTextarea";
 import "./MarkdownTextarea.css";
-import AutoExpandingTextarea from "./AutoexpandingTextarea";
 
 type Props = {
   markdown: string;
@@ -9,7 +9,7 @@ type Props = {
   showPreview: boolean;
 };
 
-const MarkdownContent = ({
+export const MarkdownTextarea = ({
   markdown,
   setMarkdown,
   showPreview,
@@ -22,12 +22,7 @@ const MarkdownContent = ({
         !showPreview ? "show" : ""
       }`}
     >
-      <AutoExpandingTextarea
-        markdown={markdown}
-        setMarkdown={setMarkdown}
-      />
+      <AutoexpandingTextarea markdown={markdown} setMarkdown={setMarkdown} />
     </div>
   );
 };
-
-export default MarkdownContent;

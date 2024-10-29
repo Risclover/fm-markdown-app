@@ -17,7 +17,7 @@ type Props = {
   currentFile: MarkdownFile | null;
 };
 
-const useDeleteDocumentWarning = ({
+export const useDeleteDocumentWarning = ({
   setShowDeleteWarning,
   setCurrentFile,
   setMarkdown,
@@ -57,5 +57,3 @@ const useDeleteDocumentWarning = ({
 
   return { handleDelete };
 };
-
-export default useDeleteDocumentWarning;

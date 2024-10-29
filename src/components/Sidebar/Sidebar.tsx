@@ -1,8 +1,8 @@
 import React, { SetStateAction } from "react";
-import Logo from "../../assets/images/logo.svg";
+import { DarkLightToggle, MyDocuments } from "../../components";
+import type { MarkdownFile } from "../../hooks";
+import { Logos } from "../../assets";
 import "./Sidebar.css";
-import MyDocuments, { MarkdownFile } from "./MyDocuments";
-import DarkLightToggle from "../DarkLightToggle/DarkLightToggle";
 
 type Props = {
   showSidebar: boolean;
@@ -18,7 +18,7 @@ type Props = {
   currentFile: MarkdownFile | null;
 };
 
-const Sidebar = ({
+export const Sidebar = ({
   showSidebar,
   setShowSidebar,
   setFileTitle,
@@ -34,7 +34,7 @@ const Sidebar = ({
   return (
     <div className={`sidebar${showSidebar ? " open" : ""}`}>
       <div className="sidebar-top">
-        <img className="logo-show" src={Logo} alt="Markdown" />
+        <img className="logo-show" src={Logos.Logo} alt="Markdown" />
         <MyDocuments
           setCurrentFile={setCurrentFile}
           setMarkdown={setMarkdown}
@@ -52,5 +52,3 @@ const Sidebar = ({
     </div>
   );
 };
-
-export default Sidebar;

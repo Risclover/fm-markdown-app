@@ -1,8 +1,8 @@
 import React, { SetStateAction } from "react";
-import WarningMessage from "../WarningMessage";
-import useDeleteDocumentWarning from "./hooks/useDeleteDocumentWarning";
+import { WarningMessage } from "../WarningMessage";
+import { useDeleteDocumentWarning } from "./hooks";
+import type { MarkdownFile } from "../../../hooks";
 import "./DeleteDocumentWarning.css";
-import { MarkdownFile } from "../../Sidebar/MyDocuments";
 
 type Props = {
   setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
@@ -14,7 +14,7 @@ type Props = {
   setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
 };
 
-const DeleteDocumentWarning = ({
+export const DeleteDocumentWarning = ({
   currentFile,
   setMarkdown,
   setFileTitle,
@@ -47,5 +47,3 @@ const DeleteDocumentWarning = ({
     </WarningMessage>
   );
 };
-
-export default DeleteDocumentWarning;

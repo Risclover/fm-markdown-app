@@ -1,17 +1,19 @@
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Navbar from "../../components/Navbar/Navbar";
-import Titlebar from "../../components/Titlebar/Titlebar";
-import MarkdownTextarea from "../../components/MarkdownTextarea/MarkdownTextarea";
-import MarkdownPreview from "../../components/MarkdownPreview/MarkdownPreview";
-import useHomepage from "./hooks/useHomepage";
-import DeleteDocumentWarning from "../../components/WarningMessage/DeleteDocumentWarning/DeleteDocumentWarning";
-import "./Homepage.css";
 import { useContext, useEffect } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
-import IdenticalTitleWarning from "../../components/WarningMessage/IdenticalTitleWarning/IdenticalTitleWarning";
-import ChangesUnsavedWarning from "../../components/WarningMessage/ChangesUnsavedWarning/ChangesUnsavedWarning";
+import {
+  Sidebar,
+  Navbar,
+  Titlebar,
+  MarkdownTextarea,
+  MarkdownPreview,
+  DeleteDocumentWarning,
+  IdenticalTitleWarning,
+  ChangesUnsavedWarning,
+} from "../../components";
+import { useHomepage } from "./hooks";
+import { ThemeContext } from "../../context";
+import "./Homepage.css";
 
-const Homepage = () => {
+export const Homepage = () => {
   const { theme } = useContext(ThemeContext);
 
   const {
@@ -129,5 +131,3 @@ const Homepage = () => {
     </div>
   );
 };
-
-export default Homepage;

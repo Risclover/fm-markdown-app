@@ -15,7 +15,7 @@ type Props = {
   setWarningType: React.Dispatch<SetStateAction<string>>;
 };
 
-const useNavbar = ({
+export const useNavbar = ({
   setShowDeleteWarning,
   setCurrentFile,
   currentFile,
@@ -120,5 +120,3 @@ const useNavbar = ({
 
   return { handleDelete, handleSave, handleDownload, savedText };
 };
-
-export default useNavbar;

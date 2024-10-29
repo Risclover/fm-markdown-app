@@ -5,12 +5,10 @@ type Props = {
   setShowPreview: React.Dispatch<SetStateAction<boolean>>;
 };
 
-const useTitlebar = ({ showPreview, setShowPreview }: Props) => {
+export const useTitlebar = ({ showPreview, setShowPreview }: Props) => {
   const handlePreviewClick = () => {
     setShowPreview(!showPreview);
   };
 
   return { handlePreviewClick };
 };
-
-export default useTitlebar;

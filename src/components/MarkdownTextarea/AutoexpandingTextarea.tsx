@@ -1,12 +1,12 @@
 import React, { SetStateAction, useRef } from "react";
-import useAutoexpandingTextarea from "./hooks/useAutoexpandingTextarea";
+import { useAutoexpandingTextarea } from "./hooks";
 
 type Props = {
   markdown: string;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
 };
 
-const AutoExpandingTextarea = ({ markdown, setMarkdown }: Props) => {
+export const AutoexpandingTextarea = ({ markdown, setMarkdown }: Props) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const { handleChange, handleKeyDown } = useAutoexpandingTextarea({
     textareaRef,
@@ -36,5 +36,3 @@ const AutoExpandingTextarea = ({ markdown, setMarkdown }: Props) => {
     />
   );
 };
-
-export default AutoExpandingTextarea;

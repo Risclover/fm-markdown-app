@@ -1,5 +1,5 @@
-import React, { SetStateAction, useState } from "react";
-import WarningMessage from "../WarningMessage";
+import React, { SetStateAction } from "react";
+import {WarningMessage} from "../WarningMessage";
 
 type Props = {
   fileTitle: string;
@@ -7,7 +7,7 @@ type Props = {
   warningType: string;
 };
 
-const IdenticalTitleWarning = ({
+export const IdenticalTitleWarning = ({
   fileTitle,
   setShowWarning,
   warningType,
@@ -42,5 +42,3 @@ const IdenticalTitleWarning = ({
     </WarningMessage>
   );
 };
-
-export default IdenticalTitleWarning;

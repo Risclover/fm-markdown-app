@@ -1,27 +1,25 @@
-import React, { useContext } from "react";
-import MoonIcon from "../../assets/images/icon-dark-mode.svg";
-import SunIcon from "../../assets/images/icon-light-mode.svg";
-import DarkLightSwitch from "./DarkLightSwitch";
+import { useContext } from "react";
+import { Logos } from "../../assets";
+import { DarkLightSwitch } from "./DarkLightSwitch";
+import { ThemeContext } from "../../context";
 import "./DarkLightToggle.css";
-import { ThemeContext } from "../../context/ThemeContext";
 
-const DarkLightToggle = () => {
-  const { theme } = useContext(ThemeContext);
+export const DarkLightToggle = () => {
+  const { theme }: { theme: string } = useContext(ThemeContext);
+
   return (
     <div className="dark-light-toggle-container">
       <img
         className={`dark-mode-icon${theme === "dark" ? " active" : ""}`}
-        src={MoonIcon}
+        src={Logos.IconDarkMode}
         alt="Dark mode"
       />
       <DarkLightSwitch />
       <img
         className={`light-mode-icon${theme === "light" ? " active" : ""}`}
-        src={SunIcon}
+        src={Logos.IconLightMode}
         alt="Light mode"
       />
     </div>
   );
 };
-
-export default DarkLightToggle;

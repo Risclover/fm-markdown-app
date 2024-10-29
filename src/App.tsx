@@ -1,4 +1,4 @@
-import Homepage from "./pages/Homepage/Homepage";
+import { Homepage } from "./pages/Homepage/Homepage";
 import "./assets/styles/variables.css";
 import "./assets/styles/main-styles.css";
 

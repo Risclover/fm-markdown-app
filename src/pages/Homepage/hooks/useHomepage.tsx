@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
-import data from "../../../data/data.json";
+import { Data } from "../../../data";
+import type { MarkdownFile } from "../../../hooks";
 
-interface MarkdownFile {
-  title: string;
-  content: string;
-  createdAt: string;
-  id: string;
-}
-
-const useHomepage = () => {
+export const useHomepage = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -19,7 +13,7 @@ const useHomepage = () => {
       return JSON.parse(storedFiles);
     } else {
       // No files in localStorage, initialize with default file from data.json
-      const defaultFile = data[0]; // Assuming data[0] is your default file
+      const defaultFile = Data[0]; // Assuming data[0] is your default file
       const initialFiles = [defaultFile];
       localStorage.setItem("markdown-files", JSON.stringify(initialFiles));
       return initialFiles;
@@ -99,5 +93,3 @@ const useHomepage = () => {
     setWarningType,
   };
 };
-
-export default useHomepage;

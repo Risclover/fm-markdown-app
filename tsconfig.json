@@ -1,7 +1,24 @@
 {
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "include": ["src", "src/types", "src/**/*"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "lib": ["dom", "es2016"],
+    "resolveJsonModule": true
+  }
 }

@@ -6,7 +6,7 @@ type Props = {
   setShowWarning: React.Dispatch<SetStateAction<boolean>>;
 };
 
-export default function WarningMessage({ children, setShowWarning }: Props) {
+export function WarningMessage({ children, setShowWarning }: Props) {
   return (
     <div className="warning-message-container">
       <div
