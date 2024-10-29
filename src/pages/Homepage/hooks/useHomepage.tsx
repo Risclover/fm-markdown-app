@@ -1,33 +1,11 @@
 import { useEffect, useState } from "react";
-import { Data } from "../../../data";
-import type { MarkdownFile } from "../../../hooks";
+import { useFile } from "../../../context";
+import type { MarkdownFile } from "../../../types";
 
 export const useHomepage = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [isDark, setIsDark] = useState(false);
-
-  const [files, setFiles] = useState<MarkdownFile[]>(() => {
-    const storedFiles = localStorage.getItem("markdown-files");
-    if (storedFiles) {
-      return JSON.parse(storedFiles);
-    } else {
-      // No files in localStorage, initialize with default file from data.json
-      const defaultFile = Data[0]; // Assuming data[0] is your default file
-      const initialFiles = [defaultFile];
-      localStorage.setItem("markdown-files", JSON.stringify(initialFiles));
-      return initialFiles;
-    }
-  });
-  const [currentFile, setCurrentFile] = useState<MarkdownFile | null>(files[0]);
-  const [markdown, setMarkdown] = useState<string>(() => {
-    const storedFiles = localStorage.getItem("markdown-files");
-    const parsedFiles: MarkdownFile[] = storedFiles
-      ? JSON.parse(storedFiles)
-      : [];
-    return parsedFiles[0]?.content || "";
-  });
-  const [fileTitle, setFileTitle] = useState(files[0]?.title || "");
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
   const [showIdenticalTitleWarning, setShowIdenticalTitleWarning] =
     useState(false);
@@ -36,19 +14,7 @@ export const useHomepage = () => {
   const [changesSaved, setChangesSaved] = useState(true);
   const [pendingFile, setPendingFile] = useState<MarkdownFile | null>(null);
   const [warningType, setWarningType] = useState("");
-
-  useEffect(() => {
-    setMarkdown(files[0]?.content);
-  }, [files]);
-
-  useEffect(() => {
-    setFileTitle(currentFile?.title || "");
-    setMarkdown(currentFile?.content || "");
-  }, [currentFile]);
-
-  useEffect(() => {
-    console.log("changes saved?:", changesSaved);
-  }, [changesSaved]);
+  const { files, currentFile, fileTitle, markdown } = useFile();
 
   useEffect(() => {
     try {
@@ -72,11 +38,8 @@ export const useHomepage = () => {
     isDark,
     setIsDark,
     currentFile,
-    setCurrentFile,
     markdown,
-    setMarkdown,
     fileTitle,
-    setFileTitle,
     showDeleteWarning,
     setShowDeleteWarning,
     showIdenticalTitleWarning,
@@ -84,7 +47,6 @@ export const useHomepage = () => {
     showChangesUnsavedWarning,
     setShowChangesUnsavedWarning,
     files,
-    setFiles,
     changesSaved,
     setChangesSaved,
     pendingFile,

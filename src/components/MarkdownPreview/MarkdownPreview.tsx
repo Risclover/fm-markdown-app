@@ -4,7 +4,6 @@ import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import { ThemeContext, useFile } from "../../context";
-import type { MarkdownFile } from "../../types";
 
 type Props = {
   showPreview: boolean;

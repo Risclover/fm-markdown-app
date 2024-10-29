@@ -1,17 +1,17 @@
 import React, { SetStateAction } from "react";
 import { WarningMessage } from "../WarningMessage";
+import { useFile } from "../../../context";
 
 type Props = {
-  fileTitle: string;
   setShowWarning: React.Dispatch<SetStateAction<boolean>>;
   warningType: string;
 };
 
 export const IdenticalTitleWarning = ({
-  fileTitle,
   setShowWarning,
   warningType,
 }: Props) => {
+  const { fileTitle } = useFile();
   return (
     <WarningMessage setShowWarning={setShowWarning}>
       <div className="delete-document-warning">

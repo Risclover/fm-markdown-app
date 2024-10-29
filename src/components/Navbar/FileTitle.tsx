@@ -1,13 +1,9 @@
-import React, { SetStateAction } from "react";
+import { useFile } from "../../context";
 import { useFileTitle } from "./hooks";
 import { Logos } from "../../assets";
 
-type Props = {
-  fileTitle: string;
-  setFileTitle: React.Dispatch<SetStateAction<string>>;
-};
-
-export const FileTitle = ({ fileTitle, setFileTitle }: Props) => {
+export const FileTitle = () => {
+  const { fileTitle, setFileTitle } = useFile();
   const { updateTitle } = useFileTitle({ setFileTitle });
 
   return (

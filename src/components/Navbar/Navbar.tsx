@@ -2,22 +2,15 @@ import React, { SetStateAction } from "react";
 import { FaCheck } from "react-icons/fa6";
 import { LuFileDown } from "react-icons/lu";
 import { SidebarMenuBtn, FileTitle } from "../../components";
+import { useFile } from "../../context";
 import { useNavbar } from "./hooks";
 import { Logos } from "../../assets";
-import type { MarkdownFile } from "../../types";
 import "./Navbar.css";
 
 type Props = {
-  fileTitle: string;
-  setFileTitle: React.Dispatch<SetStateAction<string>>;
   setShowSidebar: React.Dispatch<SetStateAction<boolean>>;
   showSidebar: boolean;
   setShowDeleteWarning: React.Dispatch<SetStateAction<boolean>>;
-  markdown: string;
-  currentFile: MarkdownFile | null;
-  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
-  files: MarkdownFile[];
-  setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
   setShowIdenticalTitleWarning: React.Dispatch<SetStateAction<boolean>>;
   changesSaved: boolean;
   setChangesSaved: React.Dispatch<SetStateAction<boolean>>;
@@ -25,21 +18,23 @@ type Props = {
 };
 
 export const Navbar = ({
-  fileTitle,
-  setFileTitle,
   setShowSidebar,
   showSidebar,
   setShowDeleteWarning,
-  currentFile,
-  setCurrentFile,
-  markdown,
-  files,
-  setFiles,
   setShowIdenticalTitleWarning,
   changesSaved,
   setChangesSaved,
   setWarningType,
 }: Props) => {
+  const {
+    fileTitle,
+    currentFile,
+    setCurrentFile,
+    files,
+    setFiles,
+    markdown,
+  } = useFile();
+
   const { handleDelete, handleSave, handleDownload, savedText } = useNavbar({
     setShowDeleteWarning,
     currentFile,
@@ -60,7 +55,7 @@ export const Navbar = ({
           showSidebar={showSidebar}
         />
         <img className="navbar-logo" src={Logos.Logo} alt="Markdown" />
-        <FileTitle fileTitle={fileTitle} setFileTitle={setFileTitle} />
+        <FileTitle />
       </div>
       <div className="navbar-container-right">
         {currentFile && currentFile.id !== "" && (

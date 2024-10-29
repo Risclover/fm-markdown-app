@@ -23,30 +23,42 @@ export const FileContext = React.createContext<FileContextType | undefined>(
 
 export const FileProvider = ({ children }: FileProviderProps) => {
   const [files, setFiles] = useState<MarkdownFile[]>(() => {
-    const storedFiles = localStorage.getItem("markdown-files");
-    if (storedFiles) {
-      return JSON.parse(storedFiles);
-    } else {
-      // No files in localStorage, initialize with default file from data.json
-      const defaultFile = Data[0]; // Assuming data[0] is your default file
-      const initialFiles = [defaultFile];
-      localStorage.setItem("markdown-files", JSON.stringify(initialFiles));
-      return initialFiles;
+    try {
+      const storedFiles = localStorage.getItem("markdown-files");
+      if (storedFiles) {
+        const parsedFiles = JSON.parse(storedFiles);
+        if (Array.isArray(parsedFiles) && parsedFiles.length > 0) {
+          return parsedFiles;
+        }
+      }
+    } catch (error) {
+      console.error("Error parsing stored files:", error);
     }
+
+    const defaultFile = Data[0];
+    const initialFiles = [defaultFile];
+    localStorage.setItem("markdown-files", JSON.stringify(initialFiles));
+    return initialFiles;
   });
 
-  useEffect(() => {
-    console.log("data:", Data[0]);
-  }, []);
   const [currentFile, setCurrentFile] = useState<MarkdownFile | null>(files[0]);
   const [markdown, setMarkdown] = useState<string>(() => {
-    const storedFiles = localStorage.getItem("markdown-files");
-    const parsedFiles: MarkdownFile[] = storedFiles
-      ? JSON.parse(storedFiles)
-      : [];
-    return parsedFiles[0]?.content || "";
+    return files[0]?.content || "";
   });
   const [fileTitle, setFileTitle] = useState(files[0]?.title || "");
+
+  useEffect(() => {
+    setMarkdown(currentFile?.content || "");
+    setFileTitle(currentFile?.title || "");
+  }, [currentFile]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("markdown-files", JSON.stringify(files));
+    } catch (error) {
+      console.error("Error saving files to localStorage:", error);
+    }
+  }, [files]);
 
   return (
     <FileContext.Provider

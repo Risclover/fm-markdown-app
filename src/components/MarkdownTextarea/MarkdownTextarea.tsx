@@ -1,19 +1,13 @@
-import React, { useContext, SetStateAction } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../../context";
 import { AutoexpandingTextarea } from "./AutoexpandingTextarea";
 import "./MarkdownTextarea.css";
 
 type Props = {
-  markdown: string;
-  setMarkdown: React.Dispatch<SetStateAction<string>>;
   showPreview: boolean;
 };
 
-export const MarkdownTextarea = ({
-  markdown,
-  setMarkdown,
-  showPreview,
-}: Props) => {
+export const MarkdownTextarea = ({ showPreview }: Props) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -23,7 +17,7 @@ export const MarkdownTextarea = ({
       }`}
       data-testid="markdown-content-container"
     >
-      <AutoexpandingTextarea markdown={markdown} setMarkdown={setMarkdown} />
+      <AutoexpandingTextarea />
     </div>
   );
 };

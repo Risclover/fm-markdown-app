@@ -1,12 +1,12 @@
 import React, { SetStateAction } from "react";
 import { WarningMessage } from "../WarningMessage";
 import type { MarkdownFile } from "../../../types";
+import { useFile } from "../../../context";
 
 type Props = {
   changesSaved: boolean;
   setChangesSaved: React.Dispatch<SetStateAction<boolean>>;
   setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
-  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
   setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
   pendingFile: MarkdownFile | null;
 };
@@ -14,10 +14,11 @@ type Props = {
 export const ChangesUnsavedWarning = ({
   setChangesSaved,
   setShowChangesUnsavedWarning,
-  setCurrentFile,
   setPendingFile,
   pendingFile,
 }: Props) => {
+  const { setCurrentFile } = useFile();
+
   const handleContinue = () => {
     setShowChangesUnsavedWarning(false);
     setCurrentFile(pendingFile);

@@ -1,12 +1,10 @@
-import React, { SetStateAction, useRef } from "react";
+import { useRef } from "react";
 import { useAutoexpandingTextarea } from "./hooks";
+import { useFile } from "../../context";
 
-type Props = {
-  markdown: string;
-  setMarkdown: React.Dispatch<SetStateAction<string>>;
-};
+export const AutoexpandingTextarea = () => {
+  const { markdown, setMarkdown } = useFile();
 
-export const AutoexpandingTextarea = ({ markdown, setMarkdown }: Props) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const { handleChange, handleKeyDown } = useAutoexpandingTextarea({
     textareaRef,

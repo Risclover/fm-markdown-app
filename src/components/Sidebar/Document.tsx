@@ -1,4 +1,5 @@
 import React, { SetStateAction } from "react";
+import { useFile } from "../../context";
 import { MarkdownFile } from "./MyDocuments";
 import { formatDate } from "./utils";
 import { Logos } from "../../assets";
@@ -6,22 +7,20 @@ import { Logos } from "../../assets";
 type Props = {
   date: string;
   file: MarkdownFile;
-  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
   changesSaved: boolean;
   setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
   setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
-  currentFile: MarkdownFile | null;
 };
 
 export const Document = ({
   date,
   file,
-  setCurrentFile,
   changesSaved,
   setShowChangesUnsavedWarning,
   setPendingFile,
-  currentFile,
 }: Props) => {
+  const { currentFile, setCurrentFile } = useFile();
+
   const handleClick = () => {
     if (currentFile === file) {
       return;

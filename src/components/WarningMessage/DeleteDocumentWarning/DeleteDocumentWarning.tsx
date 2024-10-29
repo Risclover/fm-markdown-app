@@ -1,28 +1,22 @@
 import React, { SetStateAction } from "react";
+import { useFile } from "../../../context";
 import { WarningMessage } from "../WarningMessage";
 import { useDeleteDocumentWarning } from "./hooks";
-import type { MarkdownFile } from "../../../types";
 import "./DeleteDocumentWarning.css";
 
 type Props = {
-  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
-  currentFile: MarkdownFile | null;
-  setMarkdown: React.Dispatch<SetStateAction<string>>;
-  setFileTitle: React.Dispatch<SetStateAction<string>>;
   setShowDeleteWarning: React.Dispatch<SetStateAction<boolean>>;
-  files: MarkdownFile[];
-  setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
 };
 
-export const DeleteDocumentWarning = ({
-  currentFile,
-  setMarkdown,
-  setFileTitle,
-  setShowDeleteWarning,
-  setCurrentFile,
-  files,
-  setFiles,
-}: Props) => {
+export const DeleteDocumentWarning = ({ setShowDeleteWarning }: Props) => {
+  const {
+    currentFile,
+    setCurrentFile,
+    setMarkdown,
+    setFileTitle,
+    files,
+    setFiles,
+  } = useFile();
   const { handleDelete } = useDeleteDocumentWarning({
     setMarkdown,
     setFileTitle,

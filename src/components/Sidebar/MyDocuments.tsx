@@ -19,7 +19,6 @@ type Props = {
   changesSaved: boolean;
   setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
   setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
-  currentFile: MarkdownFile | null;
 };
 
 export const MyDocuments: React.FC<Props> = ({
@@ -32,7 +31,6 @@ export const MyDocuments: React.FC<Props> = ({
   changesSaved,
   setShowChangesUnsavedWarning,
   setPendingFile,
-  currentFile,
 }) => {
   const { formatDate, handleNewDocument } = useMyDocuments({
     setCurrentFile,
@@ -57,14 +55,12 @@ export const MyDocuments: React.FC<Props> = ({
       </button>
       {files?.map((file) => (
         <Document
-          setCurrentFile={setCurrentFile}
           key={file.id} // Ensure each child has a unique key
           date={formatDate(file.createdAt)}
           file={file}
           changesSaved={changesSaved}
           setShowChangesUnsavedWarning={setShowChangesUnsavedWarning}
           setPendingFile={setPendingFile}
-          currentFile={currentFile}
         />
       ))}
     </div>
