@@ -162,6 +162,18 @@
   display: block;
 }
 
+.current-file {
+  color: var(--light-orange);
+}
+
+.current-doc {
+  cursor: default;
+}
+
+.document-info:hover .current-file {
+  color: var(--light-orange);
+}
+
 @media (min-width: 768px) {
   .sidebar-menu-btn {
     max-width: 72px;

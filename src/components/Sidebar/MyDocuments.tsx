@@ -11,16 +11,16 @@ export interface MarkdownFile {
 }
 
 type Props = {
-  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile>>;
+  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
   setShowSidebar: React.Dispatch<SetStateAction<boolean>>;
-  files: { content: string; title: string; id: string; createdAt: string }[];
-  setFiles: React.Dispatch<
-    SetStateAction<
-      { content: string; title: string; id: string; createdAt: string }[]
-    >
-  >;
+  files: MarkdownFile[];
+  setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
+  changesSaved: boolean;
+  setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
+  setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  currentFile: MarkdownFile | null;
 };
 
 const MyDocuments: React.FC<Props> = ({
@@ -30,6 +30,10 @@ const MyDocuments: React.FC<Props> = ({
   setShowSidebar,
   files,
   setFiles,
+  changesSaved,
+  setShowChangesUnsavedWarning,
+  setPendingFile,
+  currentFile,
 }) => {
   const { formatDate, handleNewDocument } = useMyDocuments({
     setCurrentFile,
@@ -39,16 +43,6 @@ const MyDocuments: React.FC<Props> = ({
     files,
     setFiles,
   });
-
-  // Optional: Log the type and content of files for debugging
-  console.log(
-    "Files:",
-    files,
-    "Type of files:",
-    typeof files,
-    "Is Array:",
-    Array.isArray(files)
-  );
 
   return (
     <div className="my-documents-container">
@@ -63,9 +57,12 @@ const MyDocuments: React.FC<Props> = ({
         <Document
           setCurrentFile={setCurrentFile}
           key={file.id} // Ensure each child has a unique key
-          name={file.title}
           date={formatDate(file.createdAt)}
           file={file}
+          changesSaved={changesSaved}
+          setShowChangesUnsavedWarning={setShowChangesUnsavedWarning}
+          setPendingFile={setPendingFile}
+          currentFile={currentFile}
         />
       ))}
     </div>

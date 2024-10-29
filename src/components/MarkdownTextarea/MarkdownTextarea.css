@@ -39,6 +39,7 @@ textarea {
   width: 100%;
   border: 1px solid red;
   padding-right: 16px;
+  min-height: calc(1157px - 42px);
 }
 
 .markdown-preview-container {

@@ -9,16 +9,12 @@ export interface MarkdownFile {
 }
 
 interface UseMyDocumentsProps {
-  setCurrentFile: React.Dispatch<React.SetStateAction<MarkdownFile>>;
+  setCurrentFile: React.Dispatch<React.SetStateAction<MarkdownFile | null>>;
   setMarkdown: React.Dispatch<React.SetStateAction<string>>;
   setFileTitle: React.Dispatch<React.SetStateAction<string>>;
   setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>;
-  files: { content: string; title: string; id: string; createdAt: string }[];
-  setFiles: React.Dispatch<
-    SetStateAction<
-      { content: string; title: string; id: string; createdAt: string }[]
-    >
-  >;
+  files: MarkdownFile[];
+  setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
 }
 
 interface UseMyDocumentsReturn {

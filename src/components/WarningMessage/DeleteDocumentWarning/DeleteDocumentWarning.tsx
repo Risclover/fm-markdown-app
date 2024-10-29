@@ -5,20 +5,8 @@ import "./DeleteDocumentWarning.css";
 import { MarkdownFile } from "../../Sidebar/MyDocuments";
 
 type Props = {
-  setCurrentFile: React.Dispatch<
-    SetStateAction<{
-      id: string;
-      title: string;
-      content: string;
-      createdAt: string;
-    }>
-  >;
-  currentFile: {
-    id: string;
-    title: string;
-    content: string;
-    createdAt: string;
-  };
+  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  currentFile: MarkdownFile | null;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
   setShowDeleteWarning: React.Dispatch<SetStateAction<boolean>>;
@@ -45,12 +33,12 @@ const DeleteDocumentWarning = ({
     currentFile,
   });
   return (
-    <WarningMessage setShowDeleteWarning={setShowDeleteWarning}>
+    <WarningMessage setShowWarning={setShowDeleteWarning}>
       <div className="delete-document-warning">
         <h4>Delete this document?</h4>
         <p>
-          Are you sure you want to delete the `{currentFile.title}` document and
-          its contents? This action cannot be reversed.
+          Are you sure you want to delete the `{currentFile?.title}` document
+          and its contents? This action cannot be reversed.
         </p>
         <button className="reg-button" onClick={handleDelete}>
           Confirm & Delete

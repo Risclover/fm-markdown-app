@@ -54,10 +54,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  min-width: 40px;
 }
 
 .save-btn-text {
   display: none;
+}
+
+.save-btn svg {
+  font-size: 20px;
 }
 
 .navbar-file-name input {
@@ -121,6 +126,11 @@
   font-weight: 400;
 }
 
+.navbar-little-btns {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 768px) {
   .file-name {
     max-width: 400px;
@@ -135,6 +145,8 @@
     gap: 8px;
     padding: 10px 17px;
     width: fit-content;
+    justify-content: space-between;
+    min-width: 155px;
   }
   .save-btn-text {
     display: inline-block;

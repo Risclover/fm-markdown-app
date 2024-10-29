@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import data from "../../../data/data.json";
+
 interface MarkdownFile {
   title: string;
   content: string;
   createdAt: string;
   id: string;
 }
+
 const useHomepage = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
@@ -23,9 +25,7 @@ const useHomepage = () => {
       return initialFiles;
     }
   });
-  const [currentFile, setCurrentFile] = useState(
-    files[0] || { id: "", title: "", content: "", createdAt: "" }
-  );
+  const [currentFile, setCurrentFile] = useState<MarkdownFile | null>(files[0]);
   const [markdown, setMarkdown] = useState<string>(() => {
     const storedFiles = localStorage.getItem("markdown-files");
     const parsedFiles: MarkdownFile[] = storedFiles
@@ -35,15 +35,26 @@ const useHomepage = () => {
   });
   const [fileTitle, setFileTitle] = useState(files[0]?.title || "");
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
+  const [showIdenticalTitleWarning, setShowIdenticalTitleWarning] =
+    useState(false);
+  const [showChangesUnsavedWarning, setShowChangesUnsavedWarning] =
+    useState(false);
+  const [changesSaved, setChangesSaved] = useState(true);
+  const [pendingFile, setPendingFile] = useState<MarkdownFile | null>(null);
+  const [warningType, setWarningType] = useState("");
 
   useEffect(() => {
     setMarkdown(files[0]?.content);
   }, [files]);
 
   useEffect(() => {
-    setFileTitle(currentFile?.title);
-    setMarkdown(currentFile?.content);
+    setFileTitle(currentFile?.title || "");
+    setMarkdown(currentFile?.content || "");
   }, [currentFile]);
+
+  useEffect(() => {
+    console.log("changes saved?:", changesSaved);
+  }, [changesSaved]);
 
   useEffect(() => {
     try {
@@ -52,6 +63,12 @@ const useHomepage = () => {
       console.error("Error saving markdown files to localStorage:", error);
     }
   }, [files]);
+
+  useEffect(() => {
+    if (currentFile?.title !== fileTitle || currentFile?.content !== markdown) {
+      setChangesSaved(false);
+    }
+  }, [markdown, fileTitle]);
 
   return {
     showSidebar,
@@ -68,8 +85,18 @@ const useHomepage = () => {
     setFileTitle,
     showDeleteWarning,
     setShowDeleteWarning,
+    showIdenticalTitleWarning,
+    setShowIdenticalTitleWarning,
+    showChangesUnsavedWarning,
+    setShowChangesUnsavedWarning,
     files,
     setFiles,
+    changesSaved,
+    setChangesSaved,
+    pendingFile,
+    setPendingFile,
+    warningType,
+    setWarningType,
   };
 };
 

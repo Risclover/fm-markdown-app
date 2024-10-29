@@ -1,29 +1,18 @@
-import React, { SetStateAction, useEffect } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { MarkdownFile } from "../../Sidebar/MyDocuments";
 
 type Props = {
   setShowDeleteWarning: React.Dispatch<SetStateAction<boolean>>;
-  setCurrentFile: React.Dispatch<
-    SetStateAction<{
-      title: string;
-      content: string;
-      createdAt: string;
-      id: string;
-    }>
-  >;
-  currentFile: {
-    title: string;
-    content: string;
-    createdAt: string;
-    id: string;
-  };
-  files: { title: string; content: string; createdAt: string; id: string }[];
-  setFiles: React.Dispatch<
-    SetStateAction<
-      { title: string; content: string; createdAt: string; id: string }[]
-    >
-  >;
+  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  currentFile: MarkdownFile | null;
+  files: MarkdownFile[];
+  setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
+  setShowIdenticalTitleWarning: React.Dispatch<SetStateAction<boolean>>;
+  fileTitle: string;
+  changesSaved: boolean;
+  setChangesSaved: React.Dispatch<SetStateAction<boolean>>;
+  setWarningType: React.Dispatch<SetStateAction<string>>;
 };
 
 const useNavbar = ({
@@ -32,7 +21,13 @@ const useNavbar = ({
   currentFile,
   files,
   setFiles,
+  setShowIdenticalTitleWarning,
+  fileTitle,
+  changesSaved,
+  setChangesSaved,
+  setWarningType,
 }: Props) => {
+  const [savedText, setSavedText] = useState("Save Changes");
   const handleDelete = () => {
     setShowDeleteWarning(true);
   };
@@ -42,7 +37,33 @@ const useNavbar = ({
     title: string,
     content: string
   ) => {
-    let id = currentFile.id || uuidv4();
+    if (savedText === "Saved!") {
+      return;
+    }
+
+    console.log(files.find((file) => file.title === fileTitle));
+
+    if (
+      files.find((file) => file.title === title && file.id !== currentFile?.id)
+    ) {
+      setShowIdenticalTitleWarning(true);
+      setWarningType("duplicate");
+      return;
+    }
+
+    if (title.length === 0) {
+      setShowIdenticalTitleWarning(true);
+      setWarningType("blank");
+      return;
+    }
+
+    if (title.includes(".")) {
+      setShowIdenticalTitleWarning(true);
+      setWarningType("dot");
+      return;
+    }
+
+    let id = currentFile?.id || uuidv4();
     const payload = {
       id: id,
       title,
@@ -64,7 +85,11 @@ const useNavbar = ({
 
     setFiles(updatedFiles);
     setCurrentFile(payload);
-    // Removed direct localStorage update
+    setSavedText("Saved!");
+    setTimeout(() => {
+      setSavedText("Save Changes");
+    }, 3000);
+    setChangesSaved(true);
   };
 
   useEffect(() => {
@@ -76,7 +101,7 @@ const useNavbar = ({
   }, [files]);
 
   const handleDownload = () => {
-    const blob = new Blob([currentFile?.content], {
+    const blob = new Blob([currentFile?.content || ""], {
       type: "text/markdown;charset=utf-8",
     });
     const fileName = `${currentFile?.title || "Untitled"}.md`;
@@ -94,7 +119,7 @@ const useNavbar = ({
     URL.revokeObjectURL(url);
   };
 
-  return { handleDelete, handleSave, handleDownload };
+  return { handleDelete, handleSave, handleDownload, savedText };
 };
 
 export default useNavbar;

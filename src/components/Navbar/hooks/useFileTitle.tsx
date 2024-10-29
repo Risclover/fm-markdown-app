@@ -6,8 +6,7 @@ type Props = {
 
 const useFileTitle = ({ setFileTitle }: Props) => {
   const updateTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const sanitizedValue = e.target.value.replace(/\./g, "");
-    setFileTitle(sanitizedValue);
+    setFileTitle(e.target.value);
   };
 
   return { updateTitle };

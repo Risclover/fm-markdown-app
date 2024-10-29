@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import Logo from "../../assets/images/logo.svg";
 import "./Sidebar.css";
-import MyDocuments from "./MyDocuments";
+import MyDocuments, { MarkdownFile } from "./MyDocuments";
 import DarkLightToggle from "../DarkLightToggle/DarkLightToggle";
 
 type Props = {
@@ -9,20 +9,13 @@ type Props = {
   setShowSidebar: React.Dispatch<SetStateAction<boolean>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
-  setCurrentFile: React.Dispatch<
-    SetStateAction<{
-      id: string;
-      createdAt: string;
-      title: string;
-      content: string;
-    }>
-  >;
-  files: { content: string; title: string; createdAt: string; id: string }[];
-  setFiles: React.Dispatch<
-    SetStateAction<
-      { content: string; title: string; createdAt: string; id: string }[]
-    >
-  >;
+  setCurrentFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  files: MarkdownFile[];
+  setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
+  changesSaved: boolean;
+  setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
+  setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  currentFile: MarkdownFile | null;
 };
 
 const Sidebar = ({
@@ -33,6 +26,10 @@ const Sidebar = ({
   setCurrentFile,
   files,
   setFiles,
+  changesSaved,
+  setShowChangesUnsavedWarning,
+  setPendingFile,
+  currentFile,
 }: Props) => {
   return (
     <div className={`sidebar${showSidebar ? " open" : ""}`}>
@@ -45,6 +42,10 @@ const Sidebar = ({
           setShowSidebar={setShowSidebar}
           files={files}
           setFiles={setFiles}
+          changesSaved={changesSaved}
+          setShowChangesUnsavedWarning={setShowChangesUnsavedWarning}
+          setPendingFile={setPendingFile}
+          currentFile={currentFile}
         />
       </div>
       <DarkLightToggle />

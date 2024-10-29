@@ -3,18 +3,15 @@ import "./WarningMessage.css";
 
 type Props = {
   children: any;
-  setShowDeleteWarning: React.Dispatch<SetStateAction<boolean>>;
+  setShowWarning: React.Dispatch<SetStateAction<boolean>>;
 };
 
-export default function WarningMessage({
-  children,
-  setShowDeleteWarning,
-}: Props) {
+export default function WarningMessage({ children, setShowWarning }: Props) {
   return (
     <div className="warning-message-container">
       <div
         className="warning-message-background"
-        onClick={() => setShowDeleteWarning(false)}
+        onClick={() => setShowWarning(false)}
       ></div>
       <div className="warning-message">{children}</div>
     </div>

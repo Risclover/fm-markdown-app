@@ -11,10 +11,10 @@ type Props = {
   setShowDeleteWarning: React.Dispatch<SetStateAction<boolean>>;
   setMarkdown: React.Dispatch<SetStateAction<string>>;
   setFileTitle: React.Dispatch<SetStateAction<string>>;
-  setCurrentFile: React.Dispatch<React.SetStateAction<MarkdownFile>>;
+  setCurrentFile: React.Dispatch<React.SetStateAction<MarkdownFile | null>>;
   files: MarkdownFile[];
   setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
-  currentFile: MarkdownFile;
+  currentFile: MarkdownFile | null;
 };
 
 const useDeleteDocumentWarning = ({

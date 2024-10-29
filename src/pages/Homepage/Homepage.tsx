@@ -8,6 +8,8 @@ import DeleteDocumentWarning from "../../components/WarningMessage/DeleteDocumen
 import "./Homepage.css";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import IdenticalTitleWarning from "../../components/WarningMessage/IdenticalTitleWarning/IdenticalTitleWarning";
+import ChangesUnsavedWarning from "../../components/WarningMessage/ChangesUnsavedWarning/ChangesUnsavedWarning";
 
 const Homepage = () => {
   const { theme } = useContext(ThemeContext);
@@ -21,12 +23,22 @@ const Homepage = () => {
     setFileTitle,
     showDeleteWarning,
     setShowDeleteWarning,
+    showIdenticalTitleWarning,
+    setShowIdenticalTitleWarning,
     currentFile,
     setCurrentFile,
     showPreview,
     setShowPreview,
     files,
     setFiles,
+    changesSaved,
+    setChangesSaved,
+    showChangesUnsavedWarning,
+    setShowChangesUnsavedWarning,
+    pendingFile,
+    setPendingFile,
+    warningType,
+    setWarningType,
   } = useHomepage();
 
   useEffect(() => {
@@ -46,6 +58,23 @@ const Homepage = () => {
           setFiles={setFiles}
         />
       )}
+      {showIdenticalTitleWarning && (
+        <IdenticalTitleWarning
+          fileTitle={fileTitle}
+          setShowWarning={setShowIdenticalTitleWarning}
+          warningType={warningType}
+        />
+      )}
+      {showChangesUnsavedWarning && (
+        <ChangesUnsavedWarning
+          changesSaved={changesSaved}
+          setChangesSaved={setChangesSaved}
+          setShowChangesUnsavedWarning={setShowChangesUnsavedWarning}
+          setCurrentFile={setCurrentFile}
+          setPendingFile={setPendingFile}
+          pendingFile={pendingFile}
+        />
+      )}
       <Sidebar
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
@@ -54,6 +83,10 @@ const Homepage = () => {
         setCurrentFile={setCurrentFile}
         files={files}
         setFiles={setFiles}
+        changesSaved={changesSaved}
+        setShowChangesUnsavedWarning={setShowChangesUnsavedWarning}
+        setPendingFile={setPendingFile}
+        currentFile={currentFile}
       />
       <div className={`main-container ${showSidebar ? "shifted" : ""}`}>
         <Navbar
@@ -67,6 +100,10 @@ const Homepage = () => {
           setCurrentFile={setCurrentFile}
           files={files}
           setFiles={setFiles}
+          setShowIdenticalTitleWarning={setShowIdenticalTitleWarning}
+          setChangesSaved={setChangesSaved}
+          changesSaved={changesSaved}
+          setWarningType={setWarningType}
         />
         <Titlebar
           showPreview={showPreview}
@@ -81,13 +118,12 @@ const Homepage = () => {
               setMarkdown={setMarkdown}
             />
           )}
-          <div
-            className={`markdown-preview-container ${
-              showPreview ? "show" : ""
-            }`}
-          >
-            <MarkdownPreview markdown={markdown} currentFile={currentFile} />
-          </div>
+
+          <MarkdownPreview
+            markdown={markdown}
+            currentFile={currentFile}
+            showPreview={showPreview}
+          />
         </main>
       </div>
     </div>
