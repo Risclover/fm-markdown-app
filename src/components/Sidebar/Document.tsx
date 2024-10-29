@@ -23,9 +23,13 @@ const Document = ({
   currentFile,
 }: Props) => {
   const handleClick = () => {
+    if (currentFile === file) {
+      return;
+    }
     if (!changesSaved) {
       setPendingFile(file);
       setShowChangesUnsavedWarning(true);
+      return;
     } else {
       setCurrentFile(file);
     }
