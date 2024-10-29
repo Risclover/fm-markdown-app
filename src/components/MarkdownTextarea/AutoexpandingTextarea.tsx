@@ -8,12 +8,11 @@ type Props = {
 
 const AutoExpandingTextarea = ({ markdown, setMarkdown }: Props) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const { handleChange, handleKeyDown, handleMouseUp } =
-    useAutoexpandingTextarea({
-      textareaRef,
-      markdown,
-      setMarkdown,
-    });
+  const { handleChange, handleKeyDown } = useAutoexpandingTextarea({
+    textareaRef,
+    markdown,
+    setMarkdown,
+  });
 
   return (
     <textarea
@@ -21,7 +20,6 @@ const AutoExpandingTextarea = ({ markdown, setMarkdown }: Props) => {
       value={markdown}
       onChange={handleChange}
       onKeyDown={handleKeyDown}
-      onMouseUp={handleMouseUp}
       placeholder="Start typing..."
       style={{
         boxSizing: "content-box",

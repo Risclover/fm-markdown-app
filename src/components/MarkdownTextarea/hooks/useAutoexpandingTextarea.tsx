@@ -81,17 +81,6 @@ const useAutoexpandingTextarea = ({
     }
   };
 
-  // Event handler for mouse up events
-  const handleMouseUp = (
-    event: React.MouseEvent<HTMLTextAreaElement>
-  ): void => {
-    const textarea = event.target as HTMLTextAreaElement;
-    // Adjust cursor after the mouse action
-    setTimeout(() => {
-      adjustCursorForTabs(textarea);
-    }, 0);
-  };
-
   // Event handler for key down events
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLTextAreaElement>
@@ -226,7 +215,7 @@ const useAutoexpandingTextarea = ({
     };
   }, []);
 
-  return { handleChange, handleKeyDown, handleMouseUp };
+  return { handleChange, handleKeyDown };
 };
 
 export default useAutoexpandingTextarea;

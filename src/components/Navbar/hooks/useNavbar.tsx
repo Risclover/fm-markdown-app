@@ -23,7 +23,6 @@ const useNavbar = ({
   setFiles,
   setShowIdenticalTitleWarning,
   fileTitle,
-  changesSaved,
   setChangesSaved,
   setWarningType,
 }: Props) => {

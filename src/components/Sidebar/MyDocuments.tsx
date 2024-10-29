@@ -42,6 +42,9 @@ const MyDocuments: React.FC<Props> = ({
     setShowSidebar,
     files,
     setFiles,
+    setShowChangesUnsavedWarning,
+    setPendingFile,
+    changesSaved,
   });
 
   return (

@@ -15,6 +15,9 @@ interface UseMyDocumentsProps {
   setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>;
   files: MarkdownFile[];
   setFiles: React.Dispatch<SetStateAction<MarkdownFile[]>>;
+  setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
+  setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  changesSaved: boolean;
 }
 
 interface UseMyDocumentsReturn {
@@ -31,6 +34,9 @@ const useMyDocuments = ({
   setShowSidebar,
   files,
   setFiles,
+  setShowChangesUnsavedWarning,
+  setPendingFile,
+  changesSaved,
 }: UseMyDocumentsProps): UseMyDocumentsReturn => {
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
@@ -42,6 +48,11 @@ const useMyDocuments = ({
   };
 
   const handleNewDocument = () => {
+    if (!changesSaved) {
+      setShowChangesUnsavedWarning(true);
+      setPendingFile({ title: "", id: "", content: "", createdAt: "" });
+      return;
+    }
     setCurrentFile({ title: "", id: "", content: "", createdAt: "" });
     setMarkdown("");
     setFileTitle("");
