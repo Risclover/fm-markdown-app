@@ -33,6 +33,7 @@
 .delete-btn {
   margin-right: 24px;
   cursor: pointer;
+  height: 20px;
 }
 
 .delete-btn img {
