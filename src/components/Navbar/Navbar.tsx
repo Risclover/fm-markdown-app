@@ -26,14 +26,8 @@ export const Navbar = ({
   setChangesSaved,
   setWarningType,
 }: Props) => {
-  const {
-    fileTitle,
-    currentFile,
-    setCurrentFile,
-    files,
-    setFiles,
-    markdown,
-  } = useFile();
+  const { fileTitle, currentFile, setCurrentFile, files, setFiles, markdown } =
+    useFile();
 
   const { handleDelete, handleSave, handleDownload, savedText } = useNavbar({
     setShowDeleteWarning,
@@ -48,7 +42,7 @@ export const Navbar = ({
     setWarningType,
   });
   return (
-    <div className="navbar-container">
+    <nav className="navbar-container">
       <div className="navbar-container-left">
         <SidebarMenuBtn
           setShowSidebar={setShowSidebar}
@@ -89,6 +83,6 @@ export const Navbar = ({
           {savedText === "Saved!" && <div></div>}
         </button>
       </div>
-    </div>
+    </nav>
   );
 };

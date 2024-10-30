@@ -15,7 +15,7 @@ export const Titlebar = ({ showPreview, setShowPreview, title }: Props) => {
   const { handlePreviewClick } = useTitlebar({ showPreview, setShowPreview });
 
   return (
-    <div className={`title-bar-container ${theme === "dark" ? "dark" : ""}`}>
+    <header className={`title-bar-container ${theme === "dark" ? "dark" : ""}`}>
       <span className="small-heading">{title}</span>
       <button className={`show-preview ${theme}`} onClick={handlePreviewClick}>
         {!showPreview ? (
@@ -32,6 +32,6 @@ export const Titlebar = ({ showPreview, setShowPreview, title }: Props) => {
           />
         )}
       </button>
-    </div>
+    </header>
   );
 };
