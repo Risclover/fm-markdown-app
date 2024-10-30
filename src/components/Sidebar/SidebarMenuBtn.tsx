@@ -17,9 +17,9 @@ export const SidebarMenuBtn = ({ setShowSidebar, showSidebar }: Props) => {
       onClick={handleSidebarToggle}
       aria-label="Menu"
     >
-      <div className={`menu-icon ${showSidebar ? "close" : ""}`}>
+      <span className={`menu-icon ${showSidebar ? "close" : ""}`}>
         <span className="lines"></span>
-      </div>
+      </span>
     </button>
   );
 };
