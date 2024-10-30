@@ -61,6 +61,7 @@ export const Homepage = () => {
         changesSaved={changesSaved}
         setShowChangesUnsavedWarning={setShowChangesUnsavedWarning}
         setPendingFile={setPendingFile}
+        setShowPreview={setShowPreview}
       />
       <div className={`main-container ${showSidebar ? "shifted" : ""}`}>
         <Navbar

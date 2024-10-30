@@ -11,6 +11,7 @@ type Props = {
   changesSaved: boolean;
   setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
   setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  setShowPreview: React.Dispatch<SetStateAction<boolean>>;
 };
 
 export const Sidebar = ({
@@ -19,6 +20,7 @@ export const Sidebar = ({
   changesSaved,
   setShowChangesUnsavedWarning,
   setPendingFile,
+  setShowPreview,
 }: Props) => {
   const { setFileTitle, setMarkdown, setCurrentFile, files, setFiles } =
     useFile();
@@ -40,6 +42,7 @@ export const Sidebar = ({
           changesSaved={changesSaved}
           setShowChangesUnsavedWarning={setShowChangesUnsavedWarning}
           setPendingFile={setPendingFile}
+          setShowPreview={setShowPreview}
         />
       </div>
       <DarkLightToggle />

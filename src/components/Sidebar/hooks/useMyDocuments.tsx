@@ -17,6 +17,7 @@ interface UseMyDocumentsProps {
   setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
   setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
   changesSaved: boolean;
+  setShowPreview: React.Dispatch<SetStateAction<boolean>>;
 }
 
 interface UseMyDocumentsReturn {
@@ -36,6 +37,7 @@ export const useMyDocuments = ({
   setShowChangesUnsavedWarning,
   setPendingFile,
   changesSaved,
+  setShowPreview,
 }: UseMyDocumentsProps): UseMyDocumentsReturn => {
   const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
@@ -56,6 +58,7 @@ export const useMyDocuments = ({
     setMarkdown("");
     setFileTitle("");
     setShowSidebar(false);
+    setShowPreview(false);
   };
 
   useEffect(() => {

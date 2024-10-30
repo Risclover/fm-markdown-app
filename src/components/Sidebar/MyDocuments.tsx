@@ -19,6 +19,7 @@ type Props = {
   changesSaved: boolean;
   setShowChangesUnsavedWarning: React.Dispatch<SetStateAction<boolean>>;
   setPendingFile: React.Dispatch<SetStateAction<MarkdownFile | null>>;
+  setShowPreview: React.Dispatch<SetStateAction<boolean>>;
 };
 
 export const MyDocuments: React.FC<Props> = ({
@@ -31,6 +32,7 @@ export const MyDocuments: React.FC<Props> = ({
   changesSaved,
   setShowChangesUnsavedWarning,
   setPendingFile,
+  setShowPreview,
 }) => {
   const { formatDate, handleNewDocument } = useMyDocuments({
     setCurrentFile,
@@ -42,6 +44,7 @@ export const MyDocuments: React.FC<Props> = ({
     setShowChangesUnsavedWarning,
     setPendingFile,
     changesSaved,
+    setShowPreview,
   });
 
   return (
