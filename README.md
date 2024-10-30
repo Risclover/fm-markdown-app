@@ -35,34 +35,4 @@ This markdown editor allows for inline-code snippets, like this: `<p>I'm inline<
 </main>
 ```
 
-My name is Sara Elizabeth Dunlop, and I am going to be a successful software engineer by the end of my life.
-
-And, more specifically, a professional software engineer by the end of this year.
-
-
->  I. AM. DETERMINED.
-
-Thank you for listening to my TedTalk. :)
-
-Once upon a time, there was a girl in a world with fishies and stinkies.
-
-THe end.
-
-
-
-
-
-
-
-
-fffff
-
-jghjgjg
-jhgjghjgh
-jghjgh
-
-hfghfg
-
-hgfhfhf
-
-hgfh
+Huzzah!
