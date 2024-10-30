@@ -25,6 +25,11 @@
   justify-content: center;
 }
 
+.show-preview img,
+.hide-preview img {
+  height: 100%;
+}
+
 .show-preview img:hover,
 .hide-preview img:hover {
   filter: invert(47%) sepia(87%) saturate(577%) hue-rotate(326deg)
@@ -49,8 +54,36 @@
     brightness(80%) contrast(98%);
 }
 
+.title-bar-left,
+.title-bar-right {
+  width: 50%;
+}
+
+.title-bar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 16px;
+}
+
+.title-bar-right span {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .title-bar-container {
     top: 72px;
+  }
+
+  .title-bar-right span {
+    display: block;
+  }
+
+  .title-bar-right.full-bar {
+    justify-content: flex-end;
+  }
+
+  .title-bar-right {
+    justify-content: space-between;
   }
 }

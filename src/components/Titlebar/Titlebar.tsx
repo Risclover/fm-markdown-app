@@ -16,22 +16,38 @@ export const Titlebar = ({ showPreview, setShowPreview, title }: Props) => {
 
   return (
     <header className={`title-bar-container ${theme === "dark" ? "dark" : ""}`}>
-      <span className="small-heading">{title}</span>
-      <button className={`show-preview ${theme}`} onClick={handlePreviewClick}>
-        {!showPreview ? (
-          <img
-            className="show-preview-icon"
-            src={Logos.IconShowPreview}
-            alt="Show Preview"
-          />
-        ) : (
-          <img
-            className="hide-preview-icon"
-            src={Logos.IconHidePreview}
-            alt="Hide Preview"
-          />
-        )}
-      </button>
+      <div
+        className={`${
+          showPreview ? "title-bar-left" : "title-bar-left full-bar"
+        }`}
+      >
+        <span className="small-heading">{title}</span>
+      </div>
+      <div
+        className={`${
+          !showPreview ? "title-bar-right" : "title-bar-right full-bar"
+        }`}
+      >
+        {!showPreview && <span className="small-heading">Preview</span>}
+        <button
+          className={`show-preview ${theme}`}
+          onClick={handlePreviewClick}
+        >
+          {!showPreview ? (
+            <img
+              className="show-preview-icon"
+              src={Logos.IconShowPreview}
+              alt="Show Preview"
+            />
+          ) : (
+            <img
+              className="hide-preview-icon"
+              src={Logos.IconHidePreview}
+              alt="Hide Preview"
+            />
+          )}
+        </button>
+      </div>
     </header>
   );
 };
